@@ -52,16 +52,17 @@ body {
 section {
     width: 100vw;
     min-height: 100vh;
-    display: none;
-}
-
-section.active {
     display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
+    pointer-events: none;
+}
+
+section.active {
+    pointer-events: auto;
 }
 
 .bg-blob {

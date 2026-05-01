@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sections.forEach((s, i) => {
             const content = s.querySelector('.content');
             if (i === current) {
+                s.removeAttribute("inert");
                 if (content) {
                     content.classList.remove('visible');
 
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            s.setAttribute("inert", ""); //Remove tabbing to another section (that are not displayed)
             if (content) content.classList.remove('visible');
             s.classList.remove('active');
         });
