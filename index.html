@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michal Hlúch</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="progress" class="progress-bar"></div>
+
+    <nav id="dots">
+        <div class="dot active" data-label="Home" onclick="section(0)"></div>
+        <div class="dot" data-label="Projects" onclick="section(1)"></div>
+        <div class="dot" data-label="Slux" onclick="section(2)"></div>
+        <div class="dot" data-label="Contact" onclick="section(3)"></div>
+    </nav>
+
+    <h3 id="nav-title" class="title" onclick="section(0)">Michal Hlúch</h3>
+
+    <div id="section-wrapper">
+        <section id="home">
+            <div class="bg-blob b1"></div>
+            <div class="bg-blob b2"></div>
+            <div class="content">
+                <h1 class="title">Michal Hlúch</h1>
+                <div class="title-line"></div>
+                <div class="container">
+                    <article>
+                        <h2 data-text="ABOUT ME">ABOUT ME</h2>
+                        <p>I am a passionate developer with over 7 years of experience in programming, constantly
+                            exploring new technologies and pushing my skills further. Over the past year, I have been
+                            working at <a href="https://www.evektor.com/" target="_blank">Evektor</a>, contributed to
+                            the development of a custom 3D aircraft configurator and an attendance management system.
+                        </p>
+                        <p>My main areas of expertise include web development, game development, Minecraft plugin
+                            development, and application development. I enjoy building both functional and creative
+                            projects — from complex backend systems to interactive user experiences.</p>
+                        <p>Previously, I spent a year as a developer on one of the largest Czech and Slovak Minecraft
+                            servers, <a class="sg" href="https://survival-games.cz/" target="_blank">Survival-Games</a>,
+                            where I worked on game systems and large-scale multiplayer features. I am also currently
+                            active as a developer on the Minecraft server <a class="slux" href="https://slux.cz/"
+                                target="_blank">Slux</a>, focusing on custom systems, performance optimization, and
+                            minigames.</p>
+                    </article>
+                    <div class="bubbles">
+                        <div class="bubble" style="--i:0">
+                            <span><span class="count" data-target="7">0</span>+ years of coding</span>
+                        </div>
+                        <div class="bubble" style="--i:1">
+                            <span><span class="count" data-target="20">0</span>+ projects</span>
+                        </div>
+                        <div class="bubble" style="--i:2">
+                            <span>Studying at VUT@FIT</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="explore" onclick="section(1)">EXPLORE MORE ↓</button>
+            </div>
+        </section>
+        <section id="projects">
+            <div class="bg-blob b3"></div>
+            <div class="content">
+                <div class="top">
+                    <nav class="project-nav">
+                        <p class="muted">Some of my projects</p>
+                        <button class="nav-item active" onclick="setProject(0)">
+                            <span class="nav-num">01</span>
+                            <span>Retail Chain</span>
+                            <span class="nav-accent"></span>
+                        </button>
+                        <button class="nav-item" onclick="setProject(1)">
+                            <span class="nav-num">02</span>
+                            <span>3D Aircraft Configurator</span>
+                            <span class="nav-accent"></span>
+                        </button>
+                        <button class="nav-item" onclick="setProject(2)">
+                            <span class="nav-num">03</span>
+                            <span>YHL</span>
+                            <span class="nav-accent"></span>
+                        </button>
+                        <button class="nav-item" onclick="setProject(3)">
+                            <span class="nav-num">04</span>
+                            <span>Lane</span>
+                            <span class="nav-accent"></span>
+                    </nav>
+
+                    <div class="skills">
+                        <p class="muted">Technical proficiency</p>
+                        <div class="skill"><span>Java</span>
+                            <div class="bar">
+                                <div class="fill" data-skill="100"></div>
+                            </div>
+                        </div>
+                        <div class="skill"><span>HTML</span>
+                            <div class="bar">
+                                <div class="fill" data-skill="100"></div>
+                            </div>
+                        </div>
+                        <div class="skill"><span>CSS</span>
+                            <div class="bar">
+                                <div class="fill" data-skill="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill"><span>JavaScript</span>
+                            <div class="bar">
+                                <div class="fill" data-skill="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill"><span>C#</span>
+                            <div class="bar">
+                                <div class="fill" data-skill="65"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-container">
+                    <div class="project active">
+                        <h3 class="proj-title">Retail Chain</h3>
+                        <h6 class="role">Collaborator</h6>
+                        <p class="desc">Retail Chain is a 3D online game for two players. One player manages the shop,
+                            while the other runs the factory. The players must cooperate, as the goal of the game is to
+                            ensure that neither of them goes bankrupt.
+
+                            The game can theoretically be played indefinitely, but the difficulty gradually increases
+                            over time. For most of the game, each player focuses on their own responsibilities. For
+                            example, the shop player must clean and serve customers, while the factory player is
+                            responsible for producing goods.
+
+                            An important part of the game is also the contract between the players. After a certain time
+                            period from when the contract is initiated, the players must renegotiate and agree on new
+                            terms that will govern them for the duration of the next contract.</p>
+                        <div class="tech">
+                            <span>Unity</span><span>C#</span><span>Blender</span><span>Steam API</span>
+                        </div>
+                        <div class="proj-actions">
+                            <a href="https://github.com/David-Citron/Retail-Chain" target="_blank" class="btn"><i
+                                    class="fa-brands fa-github"></i> GitHub</a>
+                            <a href="https://github.com/David-Citron/Retail-Chain/releases/latest/" target="_blank"
+                                class="btn"><i class="fa-solid fa-download"></i> DOWNLOAD</a>
+                        </div>
+                        <img src="img/rc.png" alt="Retail Chain" />
+                    </div>
+                    <div class="project">
+                        <h3 class="proj-title">Aircraft Configurator</h3>
+                        <h6 class="role">Collaborator</h6>
+                        <p class="desc">Web-based aircraft configuration tool built at Evektor. Users configure
+                            variants and specs — the system generates live previews and exportable documents.
+                            Configurator is currently available only for the Evektor partners.</p>
+                        <div class="tech">
+                            <span>.NET</span><span>C#</span><span>HTML</span><span>CSS</span><span>JS</span><span>MySQL</span>
+                        </div>
+                        <div class="proj-actions">
+                            <a href="https://www.evektor.com/" target="_blank" class="btn"><i
+                                    class="fa-solid fa-globe"></i> Evektor.com</a>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <h3 class="proj-title">YHL</h3>
+                        <h6 class="role">Collaborator · IN DEVELOPMENT</h6>
+                        <p class="desc">A custom-built scheduler designed for effortless event tracking, allowing you to
+                            manage important people and link meaningful dates, such as anniversaries.
+                        </p>
+                        <div class="tech">
+                            <span>.NET</span><span>C#</span><span>HTML</span><span>CSS</span><span>JS</span><span>MySQL</span>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <h3 class="proj-title">Lane</h3>
+                        <h6 class="role">Collaborator · Open Source</h6>
+                        <p class="desc">
+                            A high-performance Minecraft backend system that connects a central Controller with
+                            distributed game instances. It manages real-time routing, player sessions, and scalable
+                            multiplayer orchestration. The system supports flexible data storage using either MySQL or
+                            file-based persistence, depending on configuration. Newly created instances are
+                            automatically registered with Velocity, making them immediately available for player
+                            connections. It also includes player management features such as tab list handling, nicking,
+                            and additional gameplay-related utilities.
+                        </p>
+                        <div class="tech">
+                            <span>Java</span><span>MySQL</span><span>Minecraft API</span>
+                        </div>
+                        <div class="proj-actions">
+                            <a href="https://github.com/Lahuca-Software-Development/Lane" target="_blank" class="btn"><i
+                                    class="fa-brands fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="slux" class="slux-section">
+            <div class="bg-blob b6"></div>
+            <div class="bg-blob b7"></div>
+            <div class="content">
+                <div class="slux-header">
+                    <img class="logo" src="img/slux-logo.webp" alt="Slux-Logo" />
+                    <h2>SLUX.CZ</h2>
+                </div>
+
+                <article>
+                    <p>
+                        I have been working as a <strong>CTO</strong> on the Minecraft server
+                        <strong>Slux.cz</strong> for over <strong>5 years</strong>, where I specialize in building
+                        advanced custom systems, designing engaging gameplay mechanics, and optimizing
+                        server performance to ensure smooth and scalable player experiences. That is also a server where
+                        I started with development at all.
+                    </p>
+                    <p>
+                        During this time, I have gained extensive experience with backend architecture,
+                        plugin development, and real-time systems, consistently delivering high-quality
+                        solutions tailored to the needs of a growing player base. My work focuses not only
+                        on functionality but also on long-term maintainability and efficiency.
+                    </p>
+                    <p>
+                        Currently, I am working on one of the biggest updates for the server — migrating
+                        the entire infrastructure to the latest Minecraft version. This includes implementing
+                        a fully customized resource pack to enhance the visual experience and make the
+                        gameplay more immersive for players.
+                    </p>
+                    <p>
+                        Over the years, I have developed multiple custom minigames, including
+                        <b>BedWars</b> <i>(Hypixel-style)</i>, <b>UHCRun</b>, <b>1vs1</b>,
+                        and more. Each project reflects my focus on performance, balance, and delivering
+                        a polished experience for players.
+                    </p>
+                    <p>
+                        As mentioned in the <span class="projects" onclick="section(1)">Projects</span></b> section, I
+                        am also a contributor to the backend system <b>Lane</b>, which plays a key role in the server’s
+                        architecture and scalability.
+                    </p>
+
+                </article>
+
+                <div class="slux-stats">
+                    <div class="online-bubble">
+                        <div class="pulse-dot"></div>
+                        <span id="online">0</span>
+                        <span class="online-label">players online</span>
+                    </div>
+
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="count" data-target="100">0</span>
+                            <span class="label">Player Avg</span>
+                        </div>
+                        <div class="stat">
+                            <span><span class="count" data-target="124">0</span>k+</span>
+                            <span class="label">Registered</span>
+                        </div>
+                        <div class="stat">
+                            <span><span class="count" data-target="99.5">0</span>%</span>
+                            <span class="label">Uptime</span>
+                        </div>
+                    </div>
+
+                    <div class="slux-cta">
+                        <span class="slux-ip">mc.slux.cz</span>
+                        <button class="btn" onclick="copyText('mc.slux.cz')">Copy IP</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="bg-blob b3"></div>
+            <div class="content">
+                <h2 class="contact-title">Let's work<br>together</h2>
+                <p class="contact-desc">Have a project or a question? I'd love to chat — I usually reply fast.</p>
+                <div class="links">
+                    <a href="mailto:m.hluch@seznam.cz" class="link" style="--i:0">
+                        <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
+                        <span class="platform-name">Email</span>
+                        <span class="platform-username">m.hluch@seznam.cz</span>
+                        <span class="nav-accent"></span>
+                    </a>
+                    <p onclick="copyText('_neko1')" class="link" style="--i:1">
+                        <span class="contact-icon"><i class="fa-brands fa-discord"></i></span>
+                        <span class="platform-name">Discord</span>
+                        <span class="platform-username">_Neko1</span>
+                        <span class="nav-accent"></span>
+                    </p>
+                    <a href="https://github.com/MichalHluch" target="_blank" class="link" style="--i:2">
+                        <span class="contact-icon"><i class="fa-brands fa-github"></i></span>
+                        <span class="platform-name">GitHub</span>
+                        <span class="platform-username">MichalHluch</span>
+                        <span class="nav-accent"></span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/michal-hl%C3%BAch-7a118a271/" target="_blank" class="link" style="--i:3">
+                        <span class="contact-icon"><i class="fa-brands fa-linkedin"></i></span>
+                        <span class="platform-name">LinkedIn</span>
+                        <span class="platform-username">Michal Hlúch</span>
+                        <span class="nav-accent"></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
