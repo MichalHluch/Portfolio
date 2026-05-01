@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const content = activeSection.querySelector('.content');
 
         if (content) {
-            const atTop = content.scrollTop === 0;
+            const atTop = content.scrollTop <= 1;
             const atBottom = content.scrollTop + content.clientHeight >= content.scrollHeight - 1;
 
             if (dy > 0) {
