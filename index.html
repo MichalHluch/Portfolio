@@ -12,14 +12,11 @@
 </head>
 
 <body>
-
-    <div id="progress" class="progress-bar"></div>
-
     <nav id="dots">
-        <div class="dot active" data-label="Home" onclick="section(0)"></div>
-        <div class="dot" data-label="Projects" onclick="section(1)"></div>
-        <div class="dot" data-label="Slux" onclick="section(2)"></div>
-        <div class="dot" data-label="Contact" onclick="section(3)"></div>
+        <button class="dot active" data-label="Home" onclick="section(0)" aria-label="Home"></button>
+        <button class="dot" data-label="Projects" onclick="section(1)" aria-label="Projects"></button>
+        <button class="dot" data-label="Slux" onclick="section(2)" aria-label="Slux"></button>
+        <button class="dot" data-label="Contact" onclick="section(3)" aria-label="Contact"></button>
     </nav>
 
     <h3 id="nav-title" class="title" onclick="section(0)">Michal Hlúch</h3>
@@ -30,7 +27,6 @@
             <div class="bg-blob b2"></div>
             <div class="content">
                 <h1 class="title">Michal Hlúch</h1>
-                <div class="title-line"></div>
                 <div class="container">
                     <article>
                         <h2 data-text="ABOUT ME">ABOUT ME</h2>
@@ -275,7 +271,7 @@
             <div class="bg-blob b3"></div>
             <div class="content">
                 <h2 class="contact-title">Let's work<br>together</h2>
-                <p class="contact-desc">Have a project or a question? I'd love to chat — I usually reply fast.</p>
+                <p class="contact-desc">Wanna collaborate? Contact me via links below.</p>
                 <div class="links">
                     <a href="mailto:m.hluch@seznam.cz" class="link" style="--i:0">
                         <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>

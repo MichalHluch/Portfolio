@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             else hint.classList.remove('hidden');
         }
 
-        setTimeout(() => { isAnimating = false; }, 700);
+        setTimeout(() => { isAnimating = false; }, 500);
     }
 
     window.section = section;

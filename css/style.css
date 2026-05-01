@@ -52,9 +52,12 @@ body {
 section {
     width: 100vw;
     min-height: 100vh;
+    display: none;
+}
+
+section.active {
     display: flex;
     align-items: flex-start;
-    /* bylo center — to způsobovalo ořez nahoře/dole */
     justify-content: space-evenly;
     position: relative;
     overflow: hidden;
@@ -137,10 +140,10 @@ section.active .bg-blob {
     height: 100vh;
     height: 100vh;
     max-width: 80%;
-    scrollbar-width: none;
     overflow-y: auto;
     overflow-x: hidden;
     text-align: center;
+    scrollbar-width: none;
     opacity: 0;
     padding: 2rem 1rem;
     transform: translateY(50px);
@@ -180,6 +183,8 @@ section.active .bg-blob {
     cursor: pointer;
     position: relative;
     transition: background 0.3s ease, height 0.3s var(--ease-bounce), border-radius 0.3s ease;
+    border: none;
+    color: white;
 }
 
 .dot.active {
@@ -342,17 +347,6 @@ article p {
     opacity: 0;
     transform: translateY(-500px);
     transition: transform 0.7s ease, opacity 0.5s ease;
-}
-
-.title-line {
-    max-width: 20%;
-    min-width: 60px;
-    width: 100%;
-    background: var(--secondary-color);
-    padding: 0.5px;
-    opacity: 0;
-    transform: translateY(-500px);
-    transition: transform 0.5s ease;
 }
 
 #home h2 {
@@ -538,6 +532,7 @@ article p {
 /* Below top section, takes full width */
 .proj-container {
     max-width: 100%;
+    margin-top: 2rem;
 }
 
 .project {
@@ -813,7 +808,7 @@ article p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: left;
+    text-align: center;
     max-width: 100%;
     width: 100%;
     padding: 2rem;
