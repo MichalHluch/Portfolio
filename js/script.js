@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         SECTION_TITLE.style.opacity = id != 0 ? 1 : 0;
 
         dots.forEach((d, i) => d.classList.toggle('active', i === current));
-
+        
         sections.forEach((s, i) => {
             const content = s.querySelector('.content');
             if (i === current) {

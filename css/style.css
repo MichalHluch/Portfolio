@@ -5,9 +5,7 @@
     --slux: rgb(195, 21, 50);
 }
 
-*,
-*::before,
-*::after {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -59,6 +57,7 @@ section {
     overflow: hidden;
     flex-shrink: 0;
     pointer-events: none;
+    transition: opacity 1s ease;
 }
 
 section.active {
@@ -150,6 +149,7 @@ section.active .bg-blob {
     transform: translateY(50px);
     transition: opacity 0.7s ease 0.2s, transform 0.8s var(--ease-bounce) 0.15s;
     scroll-behavior: smooth;
+    padding: 4rem 0;
 }
 
 .content.visible {
@@ -298,13 +298,11 @@ article p {
 
 
 /* ===== HOME SECTION ===== */
-
 #home .content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 2rem 1rem;
 }
 
 #home .container {
@@ -420,7 +418,6 @@ article p {
     justify-content: flex-start;
     text-align: left;
     width: 100%;
-    margin-top: 3rem;
 }
 
 .top {
@@ -530,7 +527,6 @@ article p {
     transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Below top section, takes full width */
 .proj-container {
     max-width: 100%;
     margin-top: 2rem;
@@ -554,7 +550,6 @@ article p {
     transform: translateY(0);
 }
 
-/* Left side of the page */
 .project .proj-title,
 .project .role,
 .project .desc,
@@ -625,11 +620,9 @@ article p {
 
 /* ===== SLUX SECTION ===== */
 #slux .content {
-    padding: 2rem;
-    border-radius: 28px;
     display: grid;
     gap: 1.2rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.5s ease-in-out;
 }
 
 .slux-header {
@@ -774,6 +767,11 @@ article p {
     font-weight: 700;
 }
 
+/* For the first type I want the text to be fully colored red*/
+.stat span:first-of-type {
+    color: var(--slux);
+}
+
 .stat .label {
     font-size: 0.7rem;
     opacity: 0.4;
@@ -868,7 +866,8 @@ article p {
     transform: translateX(-30px);
     cursor: pointer;
     transition:
-        opacity 0.5s ease calc(0.3s + var(--i) * 0.1s), /* attribute i is taken from style="--i:INDEX" to calculate smooth transition */
+        opacity 0.5s ease calc(0.3s + var(--i) * 0.1s),
+        /* attribute i is taken from style="--i:INDEX" to calculate smooth transition */
         transform 0.5s var(--ease-bounce) calc(0.35s + var(--i) * 0.1s),
         color 0.25s ease,
         border-color 0.25s ease,
@@ -1022,5 +1021,34 @@ article p {
 
     .btn {
         font-size: 11px;
+    }
+}
+
+
+@media (max-width: 350px) {
+    .links {
+        max-width: 60%;
+    }
+
+    .link span:nth-of-type(3),
+    .link span:nth-of-type(4) {
+        display: none;
+    }
+
+    .link {
+        gap: 0;
+    }
+
+    #dots {
+        right: 0.8rem;
+    }
+
+    .stat .label {
+        font-size: 0.6rem;
+    }
+
+    .stat span:first-of-type {
+        font-size: 1rem;
+
     }
 }
