@@ -380,7 +380,14 @@ article p {
     border: 1px solid var(--primary-color);
     border-radius: 5px;
     transform: translateX(30px);
-    transition: transform 0.7s ease, opacity 0.5s calc(0.3s + var(--i) * 0.1s);
+    transition: transform 0.7s ease, opacity 0.5s calc(0.3s + var(--i) * 0.1s); /*Calculates smooth opacity transition based on style "--i:INDEX"*/
+    background: none;
+    color: white;
+    font-size: 1rem;
+}
+
+button.bubble  {
+    cursor: pointer;
 }
 
 .sg {
@@ -562,14 +569,15 @@ article p {
     grid-column: 3;
     grid-row: 2 / -1;
     width: 100%;
-    max-width: 500px;
+    max-width: 700px;
     object-fit: cover;
     border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .project img:hover {
-    transform: scale(1.03);
+    transform: scale(1.01);
+    border-radius: 0;
 }
 
 .project .role {
@@ -967,7 +975,6 @@ article p {
         grid-column: 1;
         grid-row: auto;
         width: 100%;
-        min-width: unset;
         order: 3;
         margin: 0.5rem auto;
     }
