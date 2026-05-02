@@ -175,3 +175,20 @@ async function updateSluxOnlinePlayers() {
         document.getElementById("online").textContent = "0";
     }
 }
+
+// Reveals all of the hidden project with delayed time for visual effects
+function toggleProjects() {
+    const btn = document.getElementById('seeMore');
+    const text = document.querySelector('.see-more-text');
+    const hidden = document.querySelectorAll('.hidden-project');
+    const isOpen = btn.classList.contains('open');
+
+    btn.classList.toggle('open');
+    text.textContent = isOpen ? 'See more' : 'See less';
+
+    hidden.forEach((el, i) => {
+        setTimeout(() => {
+            el.classList.toggle('revealed', !isOpen);
+        }, i * 50);
+    });
+}

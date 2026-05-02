@@ -9,6 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Michal Hlúch · Software Engineer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -16,7 +23,8 @@
         <button class="dot active" data-label="Home" onclick="section(0)" aria-label="Home"></button>
         <button class="dot" data-label="Projects" onclick="section(1)" aria-label="Projects"></button>
         <button class="dot" data-label="Slux" onclick="section(2)" aria-label="Slux"></button>
-        <button class="dot" data-label="Contact" onclick="section(3)" aria-label="Contact"></button>
+        <button class="dot" data-label="Technologies" onclick="section(3)" aria-label="Technologies"></button>
+        <button class="dot" data-label="Contact" onclick="section(4)" aria-label="Contact"></button>
     </nav>
 
     <h3 id="nav-title" class="title" onclick="section(0)">Michal Hlúch</h3>
@@ -27,30 +35,18 @@
             <div class="bg-blob b2"></div>
             <div class="content">
                 <h1 class="title">Michal Hlúch</h1>
+                <p class="muted">Sofware Engineer</p>
                 <div class="container">
-                    <article>
-                        <h2 data-text="ABOUT ME">ABOUT ME</h2>
-                        <p>I am a passionate developer with over 7 years of experience in programming, constantly
-                            exploring new technologies and pushing my skills further. Over the past year, I have been
-                            working at <a href="https://www.evektor.com/" target="_blank">Evektor</a>, contributed to
-                            the development of a custom 3D aircraft configurator and an attendance management system.
-                        </p>
-                        <p>My main areas of expertise include web development, game development, Minecraft plugin
-                            development, and application development. I enjoy building both functional and creative
-                            projects — from complex backend systems to interactive user experiences.</p>
-                        <p>Previously, I spent a year as a developer on one of the largest Czech and Slovak Minecraft
-                            servers, <a class="sg" href="https://survival-games.cz/" target="_blank">Survival-Games</a>,
-                            where I worked on game systems and large-scale multiplayer features. I am also currently
-                            active as a developer on the Minecraft server <a class="slux" href="https://slux.cz/"
-                                target="_blank">Slux</a>, focusing on custom systems, performance optimization, and
-                            minigames.</p>
-                    </article>
+                    <p>7+ years of building things - from large-scale Minecraft system to 3D web configurators.
+                        Currently at <a href="https://www.evektor.com/" target="_blank">Evektor</a>, and CTO of <a
+                            class="slux" href="https://slux.cz/" target="_blank">Slux</a>. I care about performance,
+                        clean architecture, and shipping things that actually work.</p>
                     <div class="bubbles">
                         <div class="bubble" style="--i:0">
-                             <span><span class="count" data-target="7">0</span>+ years of coding</span>
+                            <span><span class="count" data-target="7">0</span>+ years of coding</span>
                         </div>
                         <button onclick="section(1)" class="bubble" style="--i:1">
-                            <span><span class="count" data-target="20">0</span>+ projects</span>
+                            <span><span class="count" data-target="10">0</span>+ projects</span>
                         </button>
                         <a href="https://www.fit.vut.cz/" target="_blank" class="bubble" style="--i:2">
                             <span>Studying at VUT@FIT</span>
@@ -60,138 +56,201 @@
                 <button class="explore" onclick="section(1)">EXPLORE MORE ↓</button>
             </div>
         </section>
+
         <section id="projects">
             <div class="bg-blob b3"></div>
             <div class="content">
-                <div class="top">
-                    <nav class="project-nav">
-                        <p class="muted">Some of my projects</p>
-                        <button class="nav-item active" onclick="setProject(0)">
-                            <span class="nav-num">01</span>
-                            <span>Retail Chain</span>
-                            <span class="nav-accent"></span>
-                        </button>
-                        <button class="nav-item" onclick="setProject(1)">
-                            <span class="nav-num">02</span>
-                            <span>3D Aircraft Configurator</span>
-                            <span class="nav-accent"></span>
-                        </button>
-                        <button class="nav-item" onclick="setProject(2)">
-                            <span class="nav-num">03</span>
-                            <span>YHL</span>
-                            <span class="nav-accent"></span>
-                        </button>
-                        <button class="nav-item" onclick="setProject(3)">
-                            <span class="nav-num">04</span>
-                            <span>Lane</span>
-                            <span class="nav-accent"></span>
-                    </nav>
+                <h2>Some of my projects</h2>
+                <div class="projects">
+                    <div class="project">
+                        <img src="img/rc.png" alt="Retail Chain">
+                        <div class="card-body">
+                            <div class="card-top">
+                                <span class="proj-num">01</span>
+                                <div class="card-badges"><span class="badge">Game</span></div>
+                            </div>
+                            <h3 class="proj-title">Retail Chain</h3>
+                            <p class="role">Collaborator</p>
+                            <p class="desc">A 3D co-op game where one player runs the shop and the other the
+                                factory.
+                                Cooperate, negotiate contracts, and make sure neither of you goes bankrupt.</p>
+                            <div class="tech">
+                                <span>Unity</span><span>C#</span><span>Blender</span><span>Steam API</span>
+                            </div>
+                            <div class="proj-actions">
+                                <a href="https://github.com/David-Citron/Retail-Chain" target="_blank" class="btn"><i
+                                        class="fa-brands fa-github"></i> GitHub</a>
+                                <a href="https://github.com/David-Citron/Retail-Chain/releases/latest/" target="_blank"
+                                    class="btn ghost"><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="skills">
-                        <p class="muted">Technical proficiency</p>
-                        <div class="skill"><span>Java</span>
-                            <div class="bar">
-                                <div class="fill" data-skill="100"></div>
+                    <div class="project">
+                        <img src="img/configurator.png" alt="Aircraft Configurator">
+                        <div class="card-body">
+                            <div class="card-top">
+                                <span class="proj-num">02</span>
+                                <div class="card-badges"><span class="badge">Web</span></div>
+                            </div>
+                            <h3 class="proj-title">Aircraft Configurator</h3>
+                            <p class="role">Collaborator · Evektor</p>
+                            <p class="desc">Web-based 3D aircraft configuration tool. Users pick variants and specs
+                                —
+                                the system generates live previews and exportable documents for partners.</p>
+                            <div class="tech">
+                                <span>.NET</span><span>C#</span><span>HTML</span><span>CSS</span><span>JS</span><span>MySQL</span>
+                            </div>
+                            <div class="proj-actions">
+                                <a href="https://www.evektor.com/" target="_blank" class="btn"><i
+                                        class="fa-solid fa-globe"></i> Evektor.com</a>
                             </div>
                         </div>
-                        <div class="skill"><span>HTML</span>
-                            <div class="bar">
-                                <div class="fill" data-skill="100"></div>
+                    </div>
+
+                    <div class="project">
+                        <img src="img/yhl.png" alt="YHL"/>
+                        <div class="card-body">
+                            <div class="card-top">
+                                <span class="proj-num">03</span>
+                                <div class="card-badges"><span class="badge">Web</span><span class="badge info">In dev</span></div>
+                            </div>
+                            <h3 class="proj-title">YHL</h3>
+                            <p class="role">Collaborator · In Development</p>
+                            <p class="desc">A custom scheduler for effortless event tracking — manage important
+                                people
+                                and link meaningful dates like anniversaries to never miss what matters.</p>
+                            <div class="tech">
+                                <span>.NET</span><span>C#</span><span>HTML</span><span>CSS</span><span>JS</span><span>MySQL</span>
                             </div>
                         </div>
-                        <div class="skill"><span>CSS</span>
-                            <div class="bar">
-                                <div class="fill" data-skill="90"></div>
+                    </div>
+                    <div class="project hidden-project">
+                        <div class="card-body">
+                            <div class="card-top">
+                                <span class="proj-num">04</span>
+                                <div class="card-badges"><span class="badge">Backend System</span><span class="badge open">Open Source</span></div>
+                            </div>
+                            <h3 class="proj-title">Lane</h3>
+                            <p class="role">Collaborator · Open Source</p>
+                            <p class="desc">High-performance Minecraft backend linking a central Controller with
+                                distributed game instances — real-time routing, player sessions, scalable orchestration.
+                            </p>
+                            <div class="tech">
+                                <span>Java</span><span>MySQL</span><span>Minecraft API</span>
+                            </div>
+                            <div class="proj-actions">
+                                <a href="https://github.com/Lahuca-Software-Development/Lane" target="_blank"
+                                    class="btn"><i class="fa-brands fa-github"></i> GitHub</a>
                             </div>
                         </div>
-                        <div class="skill"><span>JavaScript</span>
-                            <div class="bar">
-                                <div class="fill" data-skill="80"></div>
+                    </div>
+                    <div class="project hidden-project">
+                        <div class="card-body">
+                            <div class="card-top">
+                                <span class="proj-num">05</span>
+                                <div class="card-badges"><span class="badge slux">Slux Minigame</span></div>
+                            </div>
+                            <h3 class="proj-title">BedWars</h3>
+                            <p class="role">Project Leader</p>
+                            <p class="desc">Hypixel style BedWars that contains multiple game mechanics such as custom
+                                item generators, team upgrades, customizable shop and much more.
+                            </p>
+                            <div class="tech">
+                                <span>Java</span><span>MySQL</span><span>Minecraft API</span>
                             </div>
                         </div>
-                        <div class="skill"><span>C#</span>
-                            <div class="bar">
-                                <div class="fill" data-skill="65"></div>
+                    </div>
+
+                    <div class="project hidden-project">
+                        <div class="card-body">
+                            <div class="card-top">
+                                <span class="proj-num">06</span>
+                                <div class="card-badges"><span class="badge slux">Slux Minigame</span></div>
+                            </div>
+                            <h3 class="proj-title">1vs1</h3>
+                            <p class="role">Project Leader</p>
+                            <p class="desc">Build your own kits, shape your playstyle and map, and battle against other
+                                players!.</p>
+                            <div class="tech">
+                                <span>Java</span><span>MySQL</span><span>Minecraft API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project hidden-project">
+                        <div class="card-body">
+                            <div class="card-top">
+                                <span class="proj-num">07</span>
+                                <div class="card-badges"><span class="badge slux">Slux Minigame</span></div>
+                            </div>
+                            <h3 class="proj-title">UHCRun</h3>
+                            <p class="role">Project Leader</p>
+                            <p class="desc">Mine resources, upgrade your gear, and get ready to face off against other
+                                players!</p>
+                            <div class="tech">
+                                <span>Java</span><span>MySQL</span><span>Minecraft API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project hidden-project">
+                        <div class="card-body">
+                            <div class="card-top">
+                                <span class="proj-num">08</span>
+                                <div class="card-badges"><span class="badge slux">Slux Minigame</span></div>
+                            </div>
+                            <h3 class="proj-title">OneBlock</h3>
+                            <p class="role">Collaborator</p>
+                            <p class="desc">A classic OneBlock minigame enhanced with modern features like custom
+                                spawners, fishing, lifts, and more.</p>
+                            <div class="tech">
+                                <span>Java</span><span>MySQL</span><span>Minecraft API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project hidden-project">
+                        <div class="card-body">
+                            <div class="card-top">
+                                <span class="proj-num">09</span>
+                                <div class="card-badges"><span class="badge slux">Slux System</span></div>
+                            </div>
+                            <h3 class="proj-title">Cosmetics</h3>
+                            <p class="role">Project Leader</p>
+                            <p class="desc">A cosmetics system featuring particles, gadgets, kill sounds, kill effects,
+                                and more.</p>
+                            <div class="tech">
+                                <span>Java</span><span>MySQL</span><span>Minecraft API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project hidden-project">
+                        <div class="card-body">
+                            <div class="card-top">
+                                <span class="proj-num">10</span>
+                                <div class="card-badges"><span class="badge">Web</span><span class="badge open">Open Source</span></div>
+                            </div>
+                            <h3 class="proj-title">Joohle</h3>
+                            <p class="role">Collaborator</p>
+                            <p class="desc">A web-based application that lets you create custom tests to verify your
+                                understanding of the material.</p>
+                            <div class="tech">
+                                <span>PHP</span><span>HTML</span><span>CSS</span><span>JS</span><span>MySQL</span>
+                            </div>
+                            <div class="proj-actions">
+                                <a href="https://github.com/MichalHluch/joohle" target="_blank" class="btn"><i
+                                        class="fa-brands fa-github"></i> GitHub</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="proj-container">
-                    <div class="project active">
-                        <h3 class="proj-title">Retail Chain</h3>
-                        <h6 class="role">Collaborator</h6>
-                        <p class="desc">Retail Chain is a 3D online game for two players. One player manages the shop,
-                            while the other runs the factory. The players must cooperate, as the goal of the game is to
-                            ensure that neither of them goes bankrupt.
-
-                            The game can theoretically be played indefinitely, but the difficulty gradually increases
-                            over time. For most of the game, each player focuses on their own responsibilities. For
-                            example, the shop player must clean and serve customers, while the factory player is
-                            responsible for producing goods.
-
-                            An important part of the game is also the contract between the players. After a certain time
-                            period from when the contract is initiated, the players must renegotiate and agree on new
-                            terms that will govern them for the duration of the next contract.</p>
-                        <div class="tech">
-                            <span>Unity</span><span>C#</span><span>Blender</span><span>Steam API</span>
-                        </div>
-                        <div class="proj-actions">
-                            <a href="https://github.com/David-Citron/Retail-Chain" target="_blank" class="btn"><i
-                                    class="fa-brands fa-github"></i> GitHub</a>
-                            <a href="https://github.com/David-Citron/Retail-Chain/releases/latest/" target="_blank"
-                                class="btn"><i class="fa-solid fa-download"></i> DOWNLOAD</a>
-                        </div>
-                        <img src="img/rc.png" alt="Retail Chain" />
-                    </div>
-                    <div class="project">
-                        <h3 class="proj-title">Aircraft Configurator</h3>
-                        <h6 class="role">Collaborator</h6>
-                        <p class="desc">Web-based aircraft configuration tool built at Evektor. Users configure
-                            variants and specs — the system generates live previews and exportable document for fabric.
-                            Configurator is currently available only for the Evektor partners.</p>
-                        <div class="tech">
-                            <span>.NET</span><span>C#</span><span>HTML</span><span>CSS</span><span>JS</span><span>MySQL</span>
-                        </div>
-                        <div class="proj-actions">
-                            <a href="https://www.evektor.com/" target="_blank" class="btn"><i
-                                    class="fa-solid fa-globe"></i> Evektor.com</a>
-                        </div>
-                        <img src="img/configurator.png" alt="Configurator" />
-                    </div>
-                    <div class="project">
-                        <h3 class="proj-title">YHL</h3>
-                        <h6 class="role">Collaborator · IN DEVELOPMENT</h6>
-                        <p class="desc">A custom-built scheduler designed for effortless event tracking, allowing you to
-                            manage important people and link meaningful dates, such as anniversaries.
-                        </p>
-                        <div class="tech">
-                            <span>.NET</span><span>C#</span><span>HTML</span><span>CSS</span><span>JS</span><span>MySQL</span>
-                        </div>
-                        <img src="img/yhl.png" alt="YHL" />
-                    </div>
-                    <div class="project">
-                        <h3 class="proj-title">Lane</h3>
-                        <h6 class="role">Collaborator · Open Source</h6>
-                        <p class="desc">
-                            A high-performance Minecraft backend system that connects a central Controller with
-                            distributed game instances. It manages real-time routing, player sessions, and scalable
-                            multiplayer orchestration. The system supports flexible data storage using either MySQL or
-                            file-based persistence, depending on configuration. Newly created instances are
-                            automatically registered with Velocity, making them immediately available for player
-                            connections. It also includes player management features such as tab list handling, nicking,
-                            and additional gameplay-related utilities.
-                        </p>
-                        <div class="tech">
-                            <span>Java</span><span>MySQL</span><span>Minecraft API</span>
-                        </div>
-                        <div class="proj-actions">
-                            <a href="https://github.com/Lahuca-Software-Development/Lane" target="_blank" class="btn"><i
-                                    class="fa-brands fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
+                <button class="see-more" id="seeMore" onclick="toggleProjects()">
+                    <span class="see-more-text">See more</span>
+                    <i class="fa-solid fa-chevron-down see-more-icon"></i>
+                </button>
             </div>
         </section>
 
@@ -230,11 +289,6 @@
                         and more. Each project reflects my focus on performance, balance, and delivering
                         a polished experience for players.
                     </p>
-                    <p>
-                        As mentioned in the <span class="projects" onclick="section(1)">Projects</span></b> section, I
-                        am also a contributor to the backend system <b>Lane</b>, which plays a key role in the server’s
-                        architecture and scalability.
-                    </p>
 
                 </article>
 
@@ -265,6 +319,13 @@
             </div>
         </section>
 
+        <section id="technologies">
+            <div class="bg-blob b3"></div>
+            <div class="content">
+                <h2>Technologies I use</h2>
+            </div>
+        </section>
+
         <section id="contact">
             <div class="bg-blob b3"></div>
             <div class="content">
@@ -289,7 +350,8 @@
                         <span class="platform-username">MichalHluch</span>
                         <span class="nav-accent"></span>
                     </a>
-                    <a href="https://www.linkedin.com/in/michal-hl%C3%BAch-7a118a271/" target="_blank" class="link" style="--i:3">
+                    <a href="https://www.linkedin.com/in/michal-hl%C3%BAch-7a118a271/" target="_blank" class="link"
+                        style="--i:3">
                         <span class="contact-icon"><i class="fa-brands fa-linkedin"></i></span>
                         <span class="platform-name">LinkedIn</span>
                         <span class="platform-username">Michal Hlúch</span>
