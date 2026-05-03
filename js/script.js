@@ -18,12 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (id < 0 || id >= TOTAL || isAnimating || id == current) return;
         isAnimating = true;
         current = id;
-        wrapper.style.transform = `translateY(-${current * 100}vh)`; //Moves wrapper to selected section 
+        wrapper.style.transform = `translateY(-${current * 100}vh)`; //Moves wrapper to selected section (transition effect)
 
         SECTION_TITLE.style.opacity = id != 0 ? 1 : 0;
 
         dots.forEach((d, i) => d.classList.toggle('active', i === current));
-        
+
         sections.forEach((s, i) => {
             const content = s.querySelector('.content');
             if (i === current) {
@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         requestAnimationFrame(() => {
                             content.classList.add('visible');
                             //Run animations when switching to different section
-                            animateSkills();
                             animateCounters();
                             updateSluxOnlinePlayers();
                         })
@@ -71,14 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const atTop = content.scrollTop === 0;
             const atBottom = content.scrollTop + content.clientHeight >= content.scrollHeight - 1;
 
-            if (e.deltaY > 0) {
-                // scroll dolů
-                if (!atBottom) return;
-                section(current + 1);
-            } else {
-                // scroll nahoru
-                if (!atTop) return;
-                section(current - 1);
+            if (e.deltaY > 0 && atBottom) {
+                section(current + 1); // Scroll down
+            } else if(e.deltaY <= 0 && atTop) {
+                section(current - 1); // Scroll up
             }
         }
     }, { passive: true });
@@ -97,26 +92,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const atTop = content.scrollTop <= 1;
             const atBottom = content.scrollTop + content.clientHeight >= content.scrollHeight - 1;
 
-            if (dy > 0) {
-                if (!atBottom) return;
-                section(current + 1);
-            } else {
-                if (!atTop) return;
-                section(current - 1);
+            if (dy > 0 && atBottom) {
+                section(current + 1); // Scroll down
+            } else if(dy <= 0 && atTop) {
+                section(current - 1); // Scroll up
             }
         }
     }, { passive: true });
 
-    //Allowing scroll using keys
+    //Allowing scroll using keys (arrows, pgup, pgdn, w, s)
     window.addEventListener('keydown', e => {
         if (e.key == 'w' || PAGE_UP.includes(e.code)) section(current - 1);
         if (e.key == 's' || PAGE_DOWN.includes(e.code)) section(current + 1);
     });
 
-    section(0);
+    section(0); //Start at section with index 0
 });
 
-//Functions that creates counters animated, like it goes from 0 to the targeted value linearly
+//Function that creates counters animated, like it goes from 0 to the targeted value linearly
 function animateCounters() {
     document.querySelectorAll('.count').forEach(counter => {
         const target = +counter.dataset.target;
@@ -140,16 +133,7 @@ function animateCounters() {
     });
 }
 
-function animateSkills() {
-    document.querySelectorAll('.fill').forEach(el => {
-        el.style.width = '0%';
-        setTimeout(() => { //This makes the animation run always even when scrolling through sections (visual effect)
-            const value = el.dataset.skill;
-            el.style.width = value + '%';
-        }, 300);
-    });
-}
-
+// Function that allows to copy text, you need to provide the button and the text to copy
 function copyText(btn, text) {
     navigator.clipboard.writeText(text).then(() => { //Copy text, when done
         const span = btn.querySelector('.text');
@@ -162,16 +146,7 @@ function copyText(btn, text) {
     });
 }
 
-function setProject(i) {
-    document.querySelectorAll('.nav-item').forEach((b, j) =>
-        b.classList.toggle('active', j === i)
-    );
-    document.querySelectorAll('.project').forEach((p, j) =>
-        p.classList.toggle('active', j === i)
-    );
-}
-
-// Retrieves player count on mc.slux.cz Minecraft server
+// Retrieves player count on mc.slux.cz Minecraft server using mcsrvstat API
 async function updateSluxOnlinePlayers() {
     try {
         const res = await fetch('https://api.mcsrvstat.us/2/mc.slux.cz');
@@ -192,7 +167,7 @@ function toggleProjects() {
     const isOpen = btn.classList.contains('open');
 
     btn.classList.toggle('open');
-    text.textContent = isOpen ? 'See more' : 'See less';
+    text.textContent = isOpen ? 'Show more' : 'Show less';
 
     hidden.forEach((el, i) => {
         setTimeout(() => {

@@ -1,8 +1,13 @@
 :root {
-    --ease-bounce: cubic-bezier(0.35, 1.2, 0.65, 1);
+    --ease-bounce: cubic-bezier(0.35, 1.2, 0.65, 1); /* Smooth animation with bounce effect */
     --primary-color: #103f66;
     --secondary-color: #26a1c0;
     --slux: rgb(195, 21, 50);
+
+
+    --bg-main: #0a0a0a;
+    --bg-card: rgba(255, 255, 255, 0.02);
+    --bg-card-hover: rgba(255, 255, 255, 0.04);
 }
 
 * {
@@ -15,10 +20,10 @@ html,
 body {
     width: 100%;
     height: 100%;
-    background: #0a0a0a;
+    background: var(--bg-main);
     font-family: "DM Sans", sans-serif;
     color: #fff;
-    overflow: hidden;
+    overflow: hidden; /* content itself is scrollable inside each section, this makes it more like section slider*/
 }
 
 p,
@@ -37,8 +42,8 @@ span {
 #section-wrapper {
     display: flex;
     flex-direction: column;
-    transition: transform 0.7s var(--ease-bounce);
-    will-change: transform;
+    transition: transform 0.7s var(--ease-bounce); /* Smooth bounce effect when switching sections (js automatically adds translateY value) */
+    will-change: transform; /*Optimazes animation (browser is aware of upcoming transform)*/
 }
 
 section {
@@ -50,18 +55,18 @@ section {
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
-    pointer-events: none;
+    pointer-events: none; /* Prevents interaction on inactive sections */
     transition: opacity 1s ease;
 }
 
 section.active {
-    pointer-events: auto;
+    pointer-events: auto; /* Enables interaction back when the section is active */
 }
 
 .bg-blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(90px);
+    filter: blur(90px); /* Creates glowing background effect */
     pointer-events: none;
     z-index: -1;
     opacity: 0;
@@ -498,12 +503,12 @@ button.bubble {
 }
 
 .project {
-    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
     width: 30%;
-    flex-shrink: 0;
-    border: 1px solid rgba(255, 255, 255, 0.07);
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--bg-card);
+    border: 1px solid var(--bg-card-hover);
     overflow: hidden;
     position: relative;
     transition:
@@ -511,13 +516,11 @@ button.bubble {
         border-color 0.3s ease,
         background 0.3s ease,
         box-shadow 0.4s ease;
-    display: flex;
-    flex-direction: column;
 }
 
 .project:hover {
     border-color: var(--secondary-color);
-    background: rgba(38, 161, 192, 0.04);
+    background: var(--bg-card-hover);
 }
 
 .project img {
@@ -899,8 +902,8 @@ section#slux article p strong {
 
 .ip-card {
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
     padding: 1.1rem 1.4rem;
     display: flex;
     align-items: center;
@@ -981,9 +984,8 @@ section#slux article p strong {
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.05);
     opacity: 0;
-    cursor: pointer;
-    transition: opacity 0.4s ease calc(var(--i) * 0.05s), border-color 0.3s ease;
-    /* Calculates time based on style=--i:INDEX for smooth transition*/
+    cursor: default;
+    transition: opacity 0.4s ease calc(var(--i) * 0.05s), border-color 0.3s ease; /* Calculates time based on style=--i:INDEX for smooth transition*/
 }
 
 .content.visible .technology {
