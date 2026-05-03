@@ -422,7 +422,8 @@ h3 {
     border: 1px solid var(--primary-color);
     border-radius: 5px;
     transform: translateX(100px);
-    transition: transform 0.7s ease, opacity 0.5s calc(0.3s + var(--i) * 0.1s), border 0.3s ease; /*Calculates smooth opacity transition based on style "--i:INDEX"*/
+    transition: transform 0.7s ease, opacity 0.5s calc(0.3s + var(--i) * 0.1s), border 0.3s ease;
+    /*Calculates smooth opacity transition based on style "--i:INDEX"*/
     background: none;
     color: white;
     font-size: 1.2rem;
@@ -796,7 +797,7 @@ section#slux article p strong {
     gap: 0.5rem;
     font-size: 1.4rem;
     font-weight: 700;
-    width: 60%;
+    width: 65%;
 }
 
 .pulse-dot {
@@ -971,7 +972,8 @@ section#slux article p strong {
     background: rgba(255, 255, 255, 0.05);
     opacity: 0;
     cursor: pointer;
-    transition: opacity 0.4s ease calc(var(--i) * 0.05s), border-color 0.3s ease; /* Calculates time based on style=--i:INDEX for smooth transition*/
+    transition: opacity 0.4s ease calc(var(--i) * 0.05s), border-color 0.3s ease;
+    /* Calculates time based on style=--i:INDEX for smooth transition*/
 }
 
 .content.visible .technology {
@@ -1125,7 +1127,8 @@ section#slux article p strong {
     transform: translateX(-30px);
     cursor: pointer;
     transition:
-        opacity 0.5s ease calc(0.3s + var(--i) * 0.1s), /* attribute i is taken from style="--i:INDEX" to calculate smooth transition */
+        opacity 0.5s ease calc(0.3s + var(--i) * 0.1s),
+        /* attribute i is taken from style="--i:INDEX" to calculate smooth transition */
         transform 0.5s var(--ease-bounce) calc(0.35s + var(--i) * 0.1s),
         color 0.25s ease,
         border-color 0.25s ease,
