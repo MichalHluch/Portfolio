@@ -358,7 +358,7 @@ h3 {
 
 #home .content .container p {
     opacity: 0;
-    transform: translateX(-800px);
+    transform: translateX(-200px);
     transition: transform 0.7s ease, opacity 0.5s ease;
 }
 
@@ -374,7 +374,7 @@ h3 {
 
 #home .title {
     opacity: 0;
-    transform: translateY(-500px);
+    transform: translateY(-200px);
     transition: transform 0.7s ease, opacity 0.5s ease;
 }
 
@@ -390,7 +390,7 @@ h3 {
 #home .muted {
     margin: 0;
     opacity: 0;
-    transform: translateY(-400px);
+    transform: translateY(-200px);
     transition: transform 0.7s ease, opacity 0.5s ease;
 }
 
@@ -408,7 +408,7 @@ h3 {
     align-content: flex-end;
     padding: 1rem;
     gap: 15px;
-    transform: translateX(800px);
+    transform: translateX(200px);
     transition: transform 0.7s ease;
 }
 
@@ -421,9 +421,8 @@ h3 {
     padding: 1rem;
     border: 1px solid var(--primary-color);
     border-radius: 5px;
-    transform: translateX(100px);
-    transition: transform 0.7s ease, opacity 0.5s calc(0.3s + var(--i) * 0.1s), border 0.3s ease;
-    /*Calculates smooth opacity transition based on style "--i:INDEX"*/
+    transform: translateX(200px);
+    transition: transform 0.7s ease, opacity 0.5s calc(0.3s + var(--i) * 0.1s), border 0.3s ease; /*Calculates smooth opacity transition based on style "--i:INDEX"*/
     background: none;
     color: white;
     font-size: 1.2rem;
@@ -431,6 +430,7 @@ h3 {
 
 .bubble:hover {
     border: 1px solid var(--secondary-color);
+    background: rgba(38, 161, 192, 0.05);
 }
 
 button.bubble {
@@ -723,11 +723,11 @@ section#slux article p strong {
 
 .slux-header {
     grid-column: 1/-1;
-    animation: float 2s ease-in-out infinite;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    animation: float 2s ease-in-out infinite;
 }
 
 .slux-header h2 {
@@ -764,8 +764,10 @@ section#slux article p strong {
     height: 165px;
 }
 
-#slux article {
+#slux .content article {
     text-align: left;
+    transform: translateX(-200px);
+    transition: transform 0.7s ease;
 }
 
 #slux .btn {
@@ -785,6 +787,13 @@ section#slux article p strong {
     align-items: center;
     gap: 1.2rem;
     max-width: 60%;
+    transform: translateX(200px);
+    transition: transform 0.7s ease;
+}
+
+#slux .content.visible article,
+.content.visible .slux-stats {
+    transform: none;
 }
 
 .online-bubble {
@@ -869,6 +878,7 @@ section#slux article p strong {
 /* For the first type I want the text to be fully colored red*/
 .stat span:first-of-type {
     color: var(--slux);
+    font-weight: bold;
 }
 
 .stat .label {
@@ -884,7 +894,7 @@ section#slux article p strong {
 
 #slux .count {
     color: var(--slux);
-    text-shadow: 1px 1px 1px #c53f3f;
+    text-shadow: none;
 }
 
 .ip-card {
