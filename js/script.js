@@ -150,8 +150,16 @@ function animateSkills() {
     });
 }
 
-function copyText(text) {
-    navigator.clipboard.writeText(text);
+function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => { //Copy text, when done
+        const span = btn.querySelector('.text');
+        const original = span.innerText;
+        span.innerText = 'COPIED';
+
+        setTimeout(() => {
+            span.innerText = original;
+        }, 1500); //Change text of the button to coppied for 1.5s then revert
+    });
 }
 
 function setProject(i) {
