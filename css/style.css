@@ -92,25 +92,27 @@ section.active .bg-blob {
     width: 600px;
     height: 400px;
     background: rgba(0, 180, 255, 0.09);
-    top: 50%;
+    bottom: 50%;
     left: 50%;
-    transform: translate(-60%, -50%);
+    transform: translate(-50%, 50%);
 }
 
 .b4 {
-    width: 500px;
-    height: 500px;
-    background: rgba(255, 100, 0, 0.1);
-    bottom: -100px;
+    width: 150px;
+    height: 150px;
+    background: var(--primary-color);
+    top: 50%;
     right: -100px;
+    transform: translate(0%, -50%);
 }
 
 .b5 {
-    width: 600px;
-    height: 600px;
-    background: rgba(80, 200, 120, 0.08);
-    top: -150px;
+    width: 150px;
+    height: 150px;
+    background: var(--secondary-color);
+    top: 50%;
     left: -100px;
+    transform: translate(0%, -50%);
 }
 
 .b6,
@@ -895,20 +897,19 @@ button.bubble {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.6rem;
+    gap: 0.5rem;
 }
 
 .technology {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
     padding: 0.6rem 1rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
+    border-radius: 5px;
     background: rgba(255, 255, 255, 0.05);
-    cursor: default;
     opacity: 0;
-    transition: opacity 0.4s ease calc(var(--i) * 0.05s), border-color 0.3s ease; /* Calculates time based on style=--i:INDEX for smooth transition*/
+    transition: opacity 0.4s ease calc(var(--i) * 0.05s), border-color 0.3s ease;
+    /* Calculates time based on style=--i:INDEX for smooth transition*/
 }
 
 .content.visible .technology {
@@ -985,11 +986,10 @@ button.bubble {
 }
 
 .name {
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.55);
-    font-weight: 400;
     transition: color 0.25s ease;
     white-space: nowrap;
 }
