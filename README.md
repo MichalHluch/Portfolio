@@ -1,5 +1,8 @@
 # TW – Portfolio
 
+Projekt je dostupný na:
+https://michalhluch.github.io/Portfolio/
+
 ## Technologie
 HTML, CSS, JavaScript
 
