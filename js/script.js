@@ -2,14 +2,12 @@ const PAGE_UP = ['ArrowUp', 'PageUp'];
 const PAGE_DOWN = ['ArrowDown', 'PageDown'];
 
 document.addEventListener('DOMContentLoaded', () => {
-
     const wrapper = document.getElementById('section-wrapper');
     const dots = document.querySelectorAll('.dot');
     const sections = document.querySelectorAll('section');
     const hint = document.getElementById('hint');
-    const TOTAL = sections.length;
-    const SECTION_TITLE = document.getElementById('nav-title');
 
+    const TOTAL = sections.length;
     let current = -1;
     let isAnimating = false;
 
@@ -20,25 +18,23 @@ document.addEventListener('DOMContentLoaded', () => {
         current = id;
         wrapper.style.transform = `translateY(-${current * 100}vh)`; //Moves wrapper to selected section (transition effect)
 
-        SECTION_TITLE.style.opacity = id != 0 ? 1 : 0;
-
-        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        dots.forEach((d, i) => d.classList.toggle('active', i === current)); //Toggle active dot in the nav
 
         sections.forEach((s, i) => {
             const content = s.querySelector('.content');
             if (i === current) {
-                s.removeAttribute("inert");
+                s.removeAttribute("inert"); //Allow tabbing back of the displayed section
                 if (content) {
                     content.classList.remove('visible');
 
-                    requestAnimationFrame(() =>
+                    requestAnimationFrame(() => {
                         requestAnimationFrame(() => {
                             content.classList.add('visible');
                             //Run animations when switching to different section
                             animateCounters();
                             updateSluxOnlinePlayers();
                         })
-                    ); //Wait 2 frames to add back visible class for smoothnes
+                    }); //Wait 2 frames to add back visible class for smoothnes
                 }
                 s.classList.add('active');
                 return;
@@ -54,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             else hint.classList.remove('hidden');
         }
 
-        setTimeout(() => { isAnimating = false; }, 500);
+        setTimeout(() => { isAnimating = false; }, 700);
     }
 
     window.section = section;
@@ -62,17 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
     //Allowing scroll using mouse wheel
     window.addEventListener('wheel', e => {
         if (isAnimating) return;
+        if (Math.abs(e.deltaY) < 30) return;
+        //Ignores small scrolls, that can be accidental or from touch pad
 
         const activeSection = sections[current];
         const content = activeSection.querySelector('.content');
 
         if (content) {
-            const atTop = content.scrollTop === 0;
-            const atBottom = content.scrollTop + content.clientHeight >= content.scrollHeight - 1;
-
+            const atTop = content.scrollTop <= 5;
+            const atBottom = content.scrollTop + content.clientHeight >= content.scrollHeight - 5;
             if (e.deltaY > 0 && atBottom) {
                 section(current + 1); // Scroll down
-            } else if(e.deltaY <= 0 && atTop) {
+            } else if (e.deltaY <= 0 && atTop) {
                 section(current - 1); // Scroll up
             }
         }
@@ -81,7 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //Allowing scroll on touch pad
     let touchY = 0;
     window.addEventListener('touchstart', e => { touchY = e.touches[0].clientY; }, { passive: true });
-    window.addEventListener('touchend', e => {
+
+    window.addEventListener('touchmove', e => {
         const dy = touchY - e.changedTouches[0].clientY;
         if (Math.abs(dy) < 30) return;
 
@@ -94,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (dy > 0 && atBottom) {
                 section(current + 1); // Scroll down
-            } else if(dy <= 0 && atTop) {
+            } else if (dy <= 0 && atTop) {
                 section(current - 1); // Scroll up
             }
         }
@@ -115,8 +113,8 @@ function animateCounters() {
         const target = +counter.dataset.target;
         let current = 0;
 
-        const duration = 1000;
-        const stepTime = 30;
+        const duration = 1000; //Animation duration
+        const stepTime = 30; //Time between each update of the counter
         const steps = duration / stepTime;
         const increment = target / steps;
 
@@ -152,6 +150,7 @@ async function updateSluxOnlinePlayers() {
         const res = await fetch('https://api.mcsrvstat.us/2/mc.slux.cz');
         const data = await res.json();
 
+        //Safely accessing the players properties using ? so if undefined it will not throw error and using ?? to default to 0 if online is undefined
         const online = data?.players?.online ?? 0;
         document.getElementById("online").textContent = online;
     } catch (e) {
@@ -167,8 +166,9 @@ function toggleProjects() {
     const isOpen = btn.classList.contains('open');
 
     btn.classList.toggle('open');
-    text.textContent = isOpen ? 'Show more' : 'Show less';
+    text.textContent = isOpen ? 'Show more' : 'Show less'; //Changing text to match the state
 
+    //Toggle revealed class with delay for each project for better visual effect
     hidden.forEach((el, i) => {
         setTimeout(() => {
             el.classList.toggle('revealed', !isOpen);

@@ -25,11 +25,11 @@
         <button class="dot" data-label="Contact" onclick="section(4)" aria-label="Contact"></button>
     </nav>
 
-    <h3 id="nav-title" class="title" onclick="section(0)">Michal Hlúch</h3>
-
+    <!-- Wrapper that indicates which section is shown-->
     <div id="section-wrapper">
+        <!-- HOME SECTION -->
         <section id="home">
-            <div class="bg-blob b1"></div>
+            <div class="bg-blob b1"></div> <!--Background blobs for effect-->
             <div class="bg-blob b2"></div>
             <div class="content">
                 <h1 class="title">Michal Hlúch</h1>
@@ -55,12 +55,13 @@
             </div>
         </section>
 
-
+        <!-- TECHNOLOGIES SECTION -->
         <section id="technologies">
-            <div class="bg-blob b3"></div>
+            <div class="bg-blob b3"></div> <!--Background blobs for effect-->
             <div class="content">
                 <h2>Technologies I use</h2>
 
+                <!-- Languages -->
                 <div class="tech-groups">
                     <div class="tech-group">
                         <p class="label">Languages</p>
@@ -95,7 +96,7 @@
                         </div>
                     </div>
 
-
+                    <!-- Frameworks & Platforms -->
                     <div class="tech-group">
                         <p class="label">Frameworks & Platforms</p>
                         <div class="tech-grid">
@@ -119,6 +120,7 @@
                         </div>
                     </div>
 
+                    <!-- Databases -->
                     <div class="tech-group">
                         <p class="label">Databases</p>
                         <div class="tech-grid">
@@ -133,6 +135,7 @@
                         </div>
                     </div>
 
+                    <!-- Tools -->
                     <div class="tech-group">
                         <p class="label">Tools</p>
                         <div class="tech-grid">
@@ -159,8 +162,9 @@
             </div>
         </section>
 
+        <!-- PROJECTS SECTION -->
         <section id="projects">
-            <div class="bg-blob b4"></div>
+            <div class="bg-blob b4"></div> <!--Background blobs for effect-->
             <div class="bg-blob b5"></div>
             <div class="content">
                 <h2>Some of my projects</h2>
@@ -188,7 +192,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="project">
                         <img src="img/configurator.png" alt="Aircraft Configurator">
                         <div class="card-body">
@@ -210,7 +213,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="project">
                         <img src="img/yhl.png" alt="YHL" />
                         <div class="card-body">
@@ -229,6 +231,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- From now on hidden projects by default, possible to show witht he show more button -->
                     <div class="project hidden-project">
                         <div class="card-body">
                             <div class="card-top">
@@ -266,7 +270,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="project hidden-project">
                         <div class="card-body">
                             <div class="card-top">
@@ -282,7 +285,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="project hidden-project">
                         <div class="card-body">
                             <div class="card-top">
@@ -298,7 +300,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="project hidden-project">
                         <div class="card-body">
                             <div class="card-top">
@@ -314,7 +315,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="project hidden-project">
                         <div class="card-body">
                             <div class="card-top">
@@ -337,6 +337,7 @@
                     </div>
                 </div>
 
+                <!-- Button to show/collapse hidden projects -->
                 <button class="see-more" id="seeMore" onclick="toggleProjects()">
                     <span class="see-more-text">Show more</span>
                     <i class="fa-solid fa-chevron-down see-more-icon"></i>
@@ -344,16 +345,17 @@
             </div>
         </section>
 
+        <!-- SLUX SECTION -->
         <section id="slux">
-            <div class="bg-blob b6"></div>
+            <div class="bg-blob b6"></div> <!--Background blobs for effect-->
             <div class="bg-blob b7"></div>
             <div class="content">
                 <div class="slux-header">
                     <img class="logo" src="img/slux-logo.webp" alt="Slux-Logo" />
                     <h2>SLUX.CZ</h2>
                 </div>
-
                 <article>
+                    <h3>My path at Slux</h3>
                     <p>
                         I have been working as a <strong>CTO</strong> on the Minecraft server
                         <strong>Slux.cz</strong> for over <strong>5 years</strong>, where I specialize in building
@@ -373,9 +375,9 @@
                         a fully customized resource pack to enhance the visual experience and make the
                         gameplay more immersive for players.
                     </p>
-
                 </article>
 
+                <!-- Slux stats to make interest -->
                 <div class="slux-stats">
                     <div class="online-bubble">
                         <div class="pulse-dot"></div>
@@ -411,8 +413,10 @@
             </div>
         </section>
 
+
+        <!-- CONTACT SECTION -->
         <section id="contact">
-            <div class="bg-blob b3"></div>
+            <div class="bg-blob b3"></div> <!--Background blobs for effect-->
             <div class="content">
                 <h2 class="contact-title">Let's work<br>together</h2>
                 <p class="contact-desc">Wanna collaborate? Contact me via links below.</p>
@@ -445,10 +449,8 @@
                 </div>
             </div>
         </section>
-
     </div>
 
     <script src="js/script.js"></script>
 </body>
-
 </html>

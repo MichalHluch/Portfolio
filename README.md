@@ -1,11 +1,24 @@
-# ITW - Portfolio
+# TW – Portfolio
 
 ## Technologie
-- HTML, CSS, JS
+HTML, CSS, JavaScript
 
-## Popis
-Zvolil jsem, řekl bych, neobvyklý styl webu a to "section scroll" tzn. že vždy máte na obrazovce pouze jednu sekci, která zabírá 100% vaší obrazovky jak na výšku tak na šířku. Přijde mi to jako originální způsob a než se již tak moc nevidí i když se s tím dá vyhrát a podle mě to vypadá velmi dobře. Na menší problémy narazilo pár lidí (řekněme testerů), kterým jsem web ukázal např. šlo se pomocí TABování dostat do jiné sekce a tím se rozbil layout, nebo při menších obrazovkách někdy nešel vidět celý kontent, ale to se mi vše podařilo vyřešit.
-Díky tomu, že vlastně vždy přecházím mezi sekcemi, tak jsem si mohl pohrát více s animacemi, hodně jsem využíval transform animace - efekt že dané elementy se posunou z boku obrazovky apod.
+## Popis práce
+
+Zvolil jsem méně častý přístup jak se web chová a to tzv. „section scroll“, kdy je na obrazovce vždy zobrazena pouze jedna sekce zabírající 100 % viewportu (šířky i výšky). Tento přístup působí moderně a umožňuje lépe kontrolovat přechody mezi jednotlivými částmi webu.
+
+Během vývoje jsem narazil na několik problémů, například možnost přepnutí do jiné sekce pomocí klávesy TAB, což narušovalo layout, nebo zobrazení obsahu na menších obrazovkách. Tyto problémy se mi podařilo vyřešit (např. použitím atributu inert a úpravou scroll logiky).
+
+Díky tomu, že pracuje po sekcích jsem si mohl více pohrát s animacemi přechodů. Využil jsem především CSS transformace pro plynulé přechody prvků (např. posun z okrajů obrazovky), což zlepšuje celkový vizuální dojem.
+
+## Vzhled
+
+Design webu je založen na tmavém pozadí s modrými akcenty. Pro oživení jsem přidal tzv. „background blobs“ – rozmazané prvky s průhledností, které vytvářejí dynamické pozadí.
+
+Barevné schéma je definováno pomocí CSS proměnných (:root), což umožňuje snadnou změnu vzhledu celého webu.
+
+Pro responzivitu textu jsem využíval funkci clamp() a dále klasické @media queries. Snažil jsem se také o konzistentní design napříč celým webem opakovaným využíváním vizuálních prvků.
 
 ## Použití AI
-Během vytváření portfolia jsem využíval AI pouze jako nějakou inspiraci, nejvíce především pro zprovoznění section scrollingu (JS), aby na všech velikost zařízení web vypadal dobře a nebyl tento způsob řešení problém při menších velikostech obrazovky. AI mi pomohlo tedy částěčně s implementací section metody v JS, každopádně kód 100% chápu.
+
+Během vývoje jsem využil AI zejména při implementaci section scrollingu v JavaScriptu, aby bylo zajištěno správné chování na všech zařízeních. Veškerý použitý kód však plně chápu.

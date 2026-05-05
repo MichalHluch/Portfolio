@@ -22,21 +22,15 @@ body {
     height: 100%;
     background: var(--bg-main);
     font-family: "DM Sans", sans-serif;
-    color: #fff;
+    color: white;
     overflow: hidden; /* content itself is scrollable inside each section, this makes it more like section slider*/
+    overscroll-behavior: none; /*Prevents scroll chaining and overscroll on mobile devices*/
 }
 
 p,
 span {
-    font-size: clamp(1rem, 2vw, 1.1rem);
     /*Ensures that the font-size scales with the screen size*/
-}
-
-#scroller {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
+    font-size: clamp(1rem, 2vw, 1.1rem);
 }
 
 #section-wrapper {
@@ -67,7 +61,7 @@ section.active {
     position: absolute;
     border-radius: 50%;
     filter: blur(90px); /* Creates glowing background effect */
-    pointer-events: none;
+    pointer-events: none; /* Disables user interactions */
     z-index: -1;
     opacity: 0;
     transition: opacity 2s ease;
@@ -138,19 +132,21 @@ section.active .bg-blob {
 }
 
 .content {
-    height: 100vh;
-    height: 100vh;
+    height: 100vh;/*Takes 100% height of the viewport*/
     max-width: 80%;
-    overflow-y: auto;
-    overflow-x: hidden;
+    width: 100%;
+    overflow-y: auto; /*Makes the content scrollable if it exceeds the viewport height*/
+    overflow-x: hidden; /*Disables horizontal scrolling if content is wider than viewport */
     text-align: center;
-    scrollbar-width: none;
+    scrollbar-width: none; /*Hides scrollbar in Firefox*/
     opacity: 0;
     padding: 2rem 1rem;
     transform: translateY(50px);
     transition: opacity 0.7s ease 0.2s, transform 0.8s var(--ease-bounce) 0.15s;
     scroll-behavior: smooth;
     padding: 4rem 0;
+    -webkit-overflow-scrolling: touch; /*Enables smooth scrolling on iOS devices*/
+    overscroll-behavior: contain; /*Prevents overscroll on mobile devices when reaching the end of the content*/
 }
 
 .content.visible {
@@ -190,7 +186,7 @@ section.active .bg-blob {
 }
 
 .dot.active {
-    background: #fff;
+    background: white;
     height: 35px;
     border-radius: 5px;
 }
@@ -218,9 +214,11 @@ section.active .bg-blob {
 }
 
 .title {
+    /*clamp function automatically scales font-size based on screen size
+    !important so it overrides other styles */
     font-size: clamp(4rem, 17vw, 10rem) !important;
-    /*clamp function automatically scales font-size based on screen size*/
-    background: linear-gradient(175deg, #fff 40%, var(--primary-color) 100%);
+    /*Adds linear gradient color to the text by clipping the background*/
+    background: linear-gradient(180deg, white 20%, var(--primary-color) 100%);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
@@ -229,27 +227,15 @@ section.active .bg-blob {
     letter-spacing: 0.02em;
 }
 
+.content::-webkit-scrollbar {
+    display: none; /* Hides scrollbar in WebKit browsers */
+}
+
 .count {
     font-size: clamp(1rem, 2vw, 1.4rem);
     font-weight: bolder;
     color: var(--secondary-color);
     text-shadow: 1px 1px 1px #103f66;
-}
-
-h3.title {
-    font-size: clamp(1rem, 8vw, 2rem) !important;
-    position: fixed;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    margin: 1rem;
-    transition: opacity 0.3s;
-    z-index: 9999;
-    cursor: pointer;
-}
-
-h3.title::before {
-    display: none;
 }
 
 a {
@@ -268,17 +254,14 @@ a {
     text-align: left;
 }
 
-.content::-webkit-scrollbar {
-    display: none;
-}
-
 article p:first-of-type {
     text-indent: 0;
 }
 
 article p {
+    font-size: clamp(13px, 2vw, 1rem); /*Ensures that the font-size scales with the screen size*/
     text-indent: 1rem;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 .btn {
@@ -293,7 +276,7 @@ article p {
     transition: background 0.2s ease-in-out;
     background: var(--primary-color);
     border: 1px solid var(--secondary-color);
-    color: #fff;
+    color: white;
 }
 
 .btn .text {
@@ -309,12 +292,13 @@ h2 {
     font-size: clamp(2rem, 5vw, 3.5rem);
     letter-spacing: 0.04em;
     line-height: 1;
-    color: #fff;
-    position: relative;
+    color: white;
+    position: relative; /*Need to set for the ::after element*/
     display: inline-block;
     margin-bottom: 2rem;
 }
 
+/*Makes a underline effect with linear-gradient color transition */
 h2::after {
     content: '';
     position: absolute;
@@ -327,19 +311,16 @@ h2::after {
     transition: width 0.4s var(--ease-bounce);
 }
 
+/*On hover fully scales the underline ::after effect*/
 h2:hover::after {
     width: 100%;
 }
 
 h3 {
     font-family: 'Bebas Neue', cursive;
-    font-size: clamp(0.7rem, 1.5vw, 0.85rem);
-    font-weight: 400;
-    letter-spacing: 0.3em;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: bold;
     text-transform: uppercase;
-    color: var(--secondary-color);
-    display: flex;
-    align-items: center;
     gap: 0.8rem;
     margin-bottom: 0.5rem;
 }
@@ -367,6 +348,8 @@ h3 {
     transition: transform 0.7s ease, opacity 0.5s ease;
 }
 
+/*Resets the position and opacity so the transition will be applied when the
+content is visible*/
 #home .content.visible .title,
 #home .content.visible .muted,
 #home .content.visible .container p,
@@ -442,10 +425,6 @@ button.bubble {
     cursor: pointer;
 }
 
-.sg {
-    color: darkgreen;
-}
-
 .slux {
     color: var(--slux);
 }
@@ -455,7 +434,7 @@ button.bubble {
     margin-top: 2.5rem;
     padding: 0.75rem 2rem;
     border: none;
-    color: #fff;
+    color: white;
     background: transparent;
     font-size: 0.85rem;
     letter-spacing: 0.12em;
@@ -469,7 +448,7 @@ button.bubble {
     transform: translateY(10px);
 }
 
-/*PROJECTS SECTION */
+/* ===== PROJECTS SECTION ===== */
 #projects .content {
     display: flex;
     flex-direction: column;
@@ -483,6 +462,7 @@ button.bubble {
     transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
+/*Projects are displayed as a row of cards with wrap enabled so they make like a grid*/
 .projects {
     display: flex;
     flex-direction: row;
@@ -490,14 +470,13 @@ button.bubble {
     flex-wrap: wrap;
     justify-content: center;
     max-width: 90%;
-    transform: translateY(300px);
+    transform: translateY(30px);
     opacity: 0;
     transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
-.content.visible h2,
 .content.visible .projects,
-.content.visible .see-more {
+.content.visible h2 {
     transform: none;
     opacity: 1;
 }
@@ -589,7 +568,6 @@ button.bubble {
 .badge.slux {
     border-color: var(--slux);
     color: var(--slux);
-
 }
 
 .proj-title {
@@ -597,7 +575,7 @@ button.bubble {
     font-size: 2rem;
     letter-spacing: 0.03em;
     line-height: 1;
-    color: #fff;
+    color: white;
     margin-bottom: 0.3rem;
     display: flex;
     justify-content: center;
@@ -659,7 +637,7 @@ button.bubble {
 
 .btn.ghost:hover {
     border-color: var(--secondary-color);
-    color: #fff;
+    color: white;
 }
 
 .hidden-project {
@@ -685,16 +663,12 @@ button.bubble {
 .see-more {
     display: inline-block;
     border: none;
-    color: #fff;
+    color: white;
     background: transparent;
     font-size: 1rem;
     cursor: pointer;
     text-transform: uppercase;
-    transform: translateY(300px);
-    opacity: 0;
-    transition: transform 0.6s ease, opacity 0.6s ease;
 }
-
 
 .see-more.open {
     margin-top: 2.5rem;
@@ -705,8 +679,8 @@ button.bubble {
 }
 
 .see-more.open .see-more-icon {
-    transform: rotate(180deg);
     /* Rotates the arrow down to up so it looks like collapse icon */
+    transform: rotate(180deg);
 }
 
 /* ===== SLUX SECTION ===== */
@@ -720,6 +694,14 @@ button.bubble {
     transition: transform 0.3s ease, opacity 0.5s ease-in-out;
 }
 
+#slux article h3 {
+    background: linear-gradient(180deg, white 35%, var(--slux) 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+
 section#slux article p strong {
     color: var(--slux);
 }
@@ -730,17 +712,12 @@ section#slux article p strong {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: float 2s ease-in-out infinite;
+    animation: float 2s ease-in-out infinite; /*Runs float animation infinitely with ease-in-out transition*/
+    pointer-events: none;
 }
 
-.slux-header h2 {
-    margin: 0.5rem 0;
-}
-
-.slux-header h2::after {
-    display: none;
-}
-
+/*Float animation, based on the % I move the element 
+by transforming it to lower Y and then back*/
 @keyframes float {
     0% {
         transform: translateY(0);
@@ -753,6 +730,15 @@ section#slux article p strong {
     100% {
         transform: translateY(0);
     }
+}
+
+.slux-header h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0.5rem 0;
+}
+
+.slux-header h2::after {
+    display: none;
 }
 
 .server-banner {
@@ -828,9 +814,11 @@ section#slux article p strong {
     inset: -4px;
     border-radius: 50%;
     background: rgba(74, 222, 128, 0.35);
-    animation: pulse 1.6s ease-out infinite;
+    animation: pulse 1.6s ease-out infinite; /*Runs the pulse animation infinitely with ease-out transition*/
 }
 
+/* Using keyframes to make pulsing effect animation scaling and 
+   unscaling with toggling opacity */
 @keyframes pulse {
     0% {
         transform: scale(0.8);
@@ -935,8 +923,7 @@ section#slux article p strong {
     letter-spacing: 0.05em;
 }
 
-/* TECHNOLOGIES SECTION */
-
+/* ===== TECHNOLOGIES SECTION ===== */
 #technologies .content {
     display: flex;
     flex-direction: column;
@@ -1071,28 +1058,19 @@ section#slux article p strong {
 }
 
 .technology:hover .name {
-    color: #fff;
+    color: white;
 }
 
-
 /* ===== CONTACT SECTION ===== */
+
+/* Content is displayed as a column of elements */
 #contact .content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
     max-width: 100%;
-    width: 100%;
     padding: 2rem;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.7s ease 0.2s, transform 0.8s var(--ease-bounce) 0.15s;
-}
-
-#contact .content.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .contact-title {
@@ -1100,7 +1078,7 @@ section#slux article p strong {
     font-size: clamp(3.5rem, 10vw, 6.5rem);
     line-height: 0.9;
     letter-spacing: 0.02em;
-    background: linear-gradient(175deg, #fff 40%, var(--primary-color) 100%);
+    background: linear-gradient(175deg, white 40%, var(--primary-color) 100%);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
@@ -1115,10 +1093,10 @@ section#slux article p strong {
     max-width: 380px;
 }
 
+/* Column of links, used display flex with column direction */
 .links {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     gap: 0.5rem;
 }
 
@@ -1126,8 +1104,8 @@ section#slux article p strong {
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 1.1rem;
-    padding: 0.9rem 1.1rem;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 5px;
     text-decoration: none;
@@ -1138,9 +1116,10 @@ section#slux article p strong {
     opacity: 0;
     transform: translateX(-30px);
     cursor: pointer;
+
+    /* attribute i is taken from style="--i:INDEX" to calculate smooth transition */
     transition:
         opacity 0.5s ease calc(0.3s + var(--i) * 0.1s),
-        /* attribute i is taken from style="--i:INDEX" to calculate smooth transition */
         transform 0.5s var(--ease-bounce) calc(0.35s + var(--i) * 0.1s),
         color 0.25s ease,
         border-color 0.25s ease,
@@ -1153,7 +1132,7 @@ section#slux article p strong {
 }
 
 .link:hover {
-    color: #fff;
+    color: white;
     border-color: var(--secondary-color);
     background: rgba(38, 161, 192, 0.07);
 }
@@ -1188,7 +1167,7 @@ section#slux article p strong {
 }
 
 .link:hover .platform-name {
-    color: #fff;
+    color: white;
 }
 
 .platform-username {
@@ -1231,8 +1210,10 @@ section#slux article p strong {
     }
 }
 
-/* # RESPO */
-@media (min-width: 1100px) {
+/* # RESPONSIVITY */
+
+/* Screen size > 1100px */
+@media screen and (min-width: 1100px) {
     #home .content {
         justify-content: center;
         overflow-y: hidden;
@@ -1244,8 +1225,8 @@ section#slux article p strong {
     }
 }
 
-/* On smaller screen <= 1024px */
-@media (max-width: 1024px) {
+/* Screen size <= 1024px */
+@media screen and (max-width: 1024px) {
     .project {
         width: 80%;
     }
@@ -1260,8 +1241,8 @@ section#slux article p strong {
     }
 }
 
-
-@media (max-width: 450px) {
+/* Screen size <= 450px */
+@media screen and (max-width: 450px) {
     .project {
         width: 100%;
     }
@@ -1277,10 +1258,6 @@ section#slux article p strong {
     .link span:nth-of-type(3),
     .link span:nth-of-type(4) {
         display: none;
-    }
-
-    .link {
-        gap: 0.2rem;
     }
 
     #dots {
