@@ -4,7 +4,6 @@
     --secondary-color: #26a1c0;
     --slux: rgb(195, 21, 50);
 
-
     --bg-main: #0a0a0a;
     --bg-card: rgba(255, 255, 255, 0.02);
     --bg-card-hover: rgba(255, 255, 255, 0.04);
@@ -799,8 +798,9 @@ by transforming it to lower Y and then back*/
     align-items: center;
     gap: 0.5rem;
     font-size: 1.4rem;
-    font-weight: 700;
-    width: 65%;
+    font-weight: bold;
+    width: 75%;
+    justify-content: center;
 }
 
 .pulse-dot {
@@ -838,8 +838,8 @@ by transforming it to lower Y and then back*/
 
 .online-label {
     font-size: 0.85rem;
-    font-weight: 400;
-    opacity: 0.5;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .stats {
@@ -868,7 +868,7 @@ by transforming it to lower Y and then back*/
 
 .stat span {
     font-size: 1.2rem;
-    font-weight: 700;
+    font-weight: bold;
 }
 
 /* For the first type I want the text to be fully colored red*/

@@ -14,6 +14,8 @@ Během vývoje jsem narazil na několik problémů, například možnost přepnu
 
 Díky tomu, že pracuje po sekcích jsem si mohl více pohrát s animacemi přechodů. Využil jsem především CSS transformace pro plynulé přechody prvků (např. posun z okrajů obrazovky), což zlepšuje celkový vizuální dojem.
 
+Využil jsem font z Google Fonts jménem DM Sans pro běžný text a pro nadpisy font Bebas Neue.
+
 ## Vzhled
 
 Design webu je založen na tmavém pozadí s modrými akcenty. Pro oživení jsem přidal tzv. „background blobs“ – rozmazané prvky s průhledností, které vytvářejí dynamické pozadí.
