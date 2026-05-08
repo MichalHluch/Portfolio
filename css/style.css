@@ -1,5 +1,5 @@
 :root {
-    --ease-bounce: cubic-bezier(0.35, 1.2, 0.65, 1); /* Smooth animation with bounce effect */
+    --ease-bounce: cubic-bezier(0.4, 1.2, 0.7, 1); /* Smooth animation with a small bounce effect */
     --primary-color: #103f66;
     --secondary-color: #26a1c0;
     --slux: rgb(195, 21, 50);
@@ -9,14 +9,13 @@
     --bg-card-hover: rgba(255, 255, 255, 0.04);
 }
 
-* {
+* { /*Sets for every element*/
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html,
-body {
+html, body {
     width: 100%;
     height: 100%;
     background: var(--bg-main);
@@ -26,17 +25,14 @@ body {
     overscroll-behavior: none; /*Prevents scroll chaining and overscroll on mobile devices*/
 }
 
-p,
-span {
-    /*Ensures that the font-size scales with the screen size*/
-    font-size: clamp(1rem, 2vw, 1.1rem);
+p, span {
+    font-size: clamp(1rem, 2vw, 1.1rem); /*Ensures that the font-size scales with the screen size*/
 }
 
 #section-wrapper {
     display: flex;
     flex-direction: column;
-    transition: transform 0.7s var(--ease-bounce); /* Smooth bounce effect when switching sections (js automatically adds translateY value) */
-    will-change: transform; /*Optimazes animation (browser is aware of upcoming transform)*/
+    transition: transform 0.5s var(--ease-bounce); /* Smooth bounce effect when switching sections (js automatically adds translateY value) */
 }
 
 section {
@@ -46,10 +42,8 @@ section {
     align-items: flex-start;
     justify-content: space-evenly;
     position: relative;
-    overflow: hidden;
     flex-shrink: 0;
     pointer-events: none; /* Prevents interaction on inactive sections */
-    transition: opacity 1s ease;
 }
 
 section.active {
@@ -59,17 +53,18 @@ section.active {
 .bg-blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(90px); /* Creates glowing background effect */
-    pointer-events: none; /* Disables user interactions */
+    will-change: transform;
+    filter: blur(65px); /* Creates glowing background effect */
     z-index: -1;
     opacity: 0;
-    transition: opacity 2s ease;
+    transition: opacity 0.5s ease;
 }
 
 section.active .bg-blob {
     opacity: 1;
 }
 
+/*Blob 1 on the top right with primary color*/
 .b1 {
     width: 300px;
     height: 300px;
@@ -78,6 +73,7 @@ section.active .bg-blob {
     right: -80px;
 }
 
+/*Blob 2 on the bottom left with secondary color*/
 .b2 {
     width: 200px;
     height: 200px;
@@ -86,38 +82,42 @@ section.active .bg-blob {
     left: -60px;
 }
 
+/*Blob 3 in the center lower opacity */
 .b3 {
     width: 600px;
     height: 400px;
-    background: rgba(0, 180, 255, 0.09);
+    background: rgba(0, 180, 255, 0.1);
     bottom: 50%;
     left: 50%;
     transform: translate(-50%, 50%);
 }
 
+/*Blob 4 in the right center with primary color */
 .b4 {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     background: var(--primary-color);
     top: 50%;
     right: -100px;
     transform: translate(0%, -50%);
 }
 
+/*Blob 5 in the left center with secondary color */
 .b5 {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     background: var(--secondary-color);
     top: 50%;
     left: -100px;
     transform: translate(0%, -50%);
 }
 
+/*Blob 6 & 7 are for Slux section */
 .b6,
 .b7 {
     width: 400px;
     height: 400px;
-    background: rgba(195, 21, 50, 0.1);
+    background: rgba(195, 21, 50, 0.25);
 }
 
 .b6 {
@@ -131,34 +131,23 @@ section.active .bg-blob {
 }
 
 .content {
-    height: 100vh;/*Takes 100% height of the viewport*/
+    height: 100vh; /*Takes 100% height of the viewport*/
     max-width: 80%;
     width: 100%;
     overflow-y: auto; /*Makes the content scrollable if it exceeds the viewport height*/
     overflow-x: hidden; /*Disables horizontal scrolling if content is wider than viewport */
     text-align: center;
     scrollbar-width: none; /*Hides scrollbar in Firefox*/
-    opacity: 0;
-    padding: 2rem 1rem;
-    transform: translateY(50px);
-    transition: opacity 0.7s ease 0.2s, transform 0.8s var(--ease-bounce) 0.15s;
     scroll-behavior: smooth;
-    padding: 4rem 0;
+    padding: 2rem 0;
     -webkit-overflow-scrolling: touch; /*Enables smooth scrolling on iOS devices*/
     overscroll-behavior: contain; /*Prevents overscroll on mobile devices when reaching the end of the content*/
+    opacity: 0;
+    transition: opacity 0.5s ease 0.1s, transform 0.4s var(--ease-bounce) 0.1s;
 }
 
 .content.visible {
     opacity: 1;
-    transform: translateY(0);
-}
-
-.tag {
-    font-size: 0.68rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.35);
-    margin-bottom: 1rem;
 }
 
 #dots {
@@ -186,14 +175,14 @@ section.active .bg-blob {
 
 .dot.active {
     background: white;
-    height: 35px;
+    height: 35px; /*Makes it larger so user knows that it is active*/
     border-radius: 5px;
 }
 
 .dot::before {
-    content: attr(data-label);
+    content: attr(data-label); /*Takes data from data-label set in html, it is hint when you hover over the dots (navbar)*/
     position: absolute;
-    right: calc(100% + 12px);
+    right: calc(100% + 12px); /*Calculates offset from the dot*/
     top: 50%;
     transform: translateY(-50%) translateX(6px);
     background: rgba(255, 255, 255, 0.08);
@@ -213,11 +202,8 @@ section.active .bg-blob {
 }
 
 .title {
-    /*clamp function automatically scales font-size based on screen size
-    !important so it overrides other styles */
-    font-size: clamp(4rem, 17vw, 10rem) !important;
-    /*Adds linear gradient color to the text by clipping the background*/
-    background: linear-gradient(180deg, white 20%, var(--primary-color) 100%);
+    font-size: clamp(4rem, 17vw, 10rem) !important;/*clamp function automatically scales font-size based on screen size !important so it overrides other styles */
+    background: linear-gradient(180deg, white 20%, var(--primary-color) 100%); /*Adds linear gradient color to the text by clipping the background*/
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
@@ -270,6 +256,7 @@ article p {
     letter-spacing: 0.08em;
     text-transform: uppercase;
     cursor: pointer;
+    font-weight: bold;
     text-decoration: none;
     display: inline-block;
     transition: background 0.2s ease-in-out;
@@ -292,7 +279,8 @@ h2 {
     letter-spacing: 0.04em;
     line-height: 1;
     color: white;
-    position: relative; /*Need to set for the ::after element*/
+    position: relative;
+    /*Need to set for the ::after element*/
     display: inline-block;
     margin-bottom: 2rem;
 }
@@ -342,7 +330,6 @@ h3 {
 }
 
 #home .content .container p {
-    opacity: 0;
     transform: translateX(-200px);
     transition: transform 0.7s ease, opacity 0.5s ease;
 }
@@ -353,32 +340,19 @@ content is visible*/
 #home .content.visible .muted,
 #home .content.visible .container p,
 #home .content.visible .container .bubbles,
-#home .content.visible .container .bubbles .bubble,
 #home .content.visible .explore {
     transform: none;
-    opacity: 1;
 }
 
 #home .title {
-    opacity: 0;
     transform: translateY(-200px);
     transition: transform 0.7s ease, opacity 0.5s ease;
-}
-
-#home h2 {
-    font-size: clamp(1rem, 4vw, 3rem);
-    position: relative;
-    color: white;
-    line-height: 2;
-    letter-spacing: 0.2rem;
-    text-align: left;
 }
 
 #home .muted {
     margin: 0;
-    opacity: 0;
     transform: translateY(-200px);
-    transition: transform 0.7s ease, opacity 0.5s ease;
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 #home p {
@@ -396,23 +370,21 @@ content is visible*/
     padding: 1rem;
     gap: 15px;
     transform: translateX(200px);
-    transition: transform 0.7s ease;
+    transition: transform 0.5s ease;
 }
 
 .bubble {
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
     width: 30%;
     padding: 1rem;
     border: 1px solid var(--primary-color);
     border-radius: 5px;
-    transform: translateX(200px);
-    transition: transform 0.7s ease, opacity 0.5s calc(0.3s + var(--i) * 0.1s), border 0.3s ease; /*Calculates smooth opacity transition based on style "--i:INDEX"*/
     background: none;
     color: white;
     font-size: 1.2rem;
+    transition: all 0.3s ease-in-out;
 }
 
 .bubble:hover {
@@ -439,7 +411,7 @@ button.bubble {
     letter-spacing: 0.12em;
     cursor: pointer;
     text-transform: uppercase;
-    transform: translateY(500px);
+    transform: translateY(100px);
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
@@ -469,7 +441,7 @@ button.bubble {
     flex-wrap: wrap;
     justify-content: center;
     max-width: 90%;
-    transform: translateY(30px);
+    transform: translateY(200px);
     opacity: 0;
     transition: transform 0.6s ease, opacity 0.6s ease;
 }
@@ -678,8 +650,7 @@ button.bubble {
 }
 
 .see-more.open .see-more-icon {
-    /* Rotates the arrow down to up so it looks like collapse icon */
-    transform: rotate(180deg);
+    transform: rotate(180deg); /* Rotates the arrow down to up so it looks like collapse icon */
 }
 
 /* ===== SLUX SECTION ===== */
@@ -690,7 +661,6 @@ button.bubble {
     align-content: center;
     justify-items: center;
     gap: 1.2rem;
-    transition: transform 0.3s ease, opacity 0.5s ease-in-out;
 }
 
 .slux-header {
@@ -698,8 +668,10 @@ button.bubble {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: float 2s ease-in-out infinite; /*Runs float animation infinitely with ease-in-out transition*/
     pointer-events: none;
+    transform: translateX(-200px);
+    transition: transform 0.7s ease;
+    animation: float 2s ease-in-out infinite;
 }
 
 /*Float animation, based on the % I move the element 
@@ -725,13 +697,6 @@ by transforming it to lower Y and then back*/
 
 .slux-header h2::after {
     display: none;
-}
-
-.server-banner {
-    width: 800px;
-    height: 90px;
-    margin: 0 auto;
-    border: none;
 }
 
 .logo {
@@ -784,9 +749,10 @@ by transforming it to lower Y and then back*/
     transition: transform 0.7s ease;
 }
 
+.content.visible .slux-header,
 #slux .content.visible article,
 .content.visible .slux-stats {
-    transform: none;
+    transform: none; /*Resets all of the initial transform and with the combination of transition it makes cool effect*/
 }
 
 .online-bubble {
@@ -819,7 +785,7 @@ by transforming it to lower Y and then back*/
     inset: -4px;
     border-radius: 50%;
     background: rgba(74, 222, 128, 0.35);
-    animation: pulse 1.6s ease-out infinite; /*Runs the pulse animation infinitely with ease-out transition*/
+    animation: pulse 1.6s ease-out infinite;
 }
 
 /* Using keyframes to make pulsing effect animation scaling and 
@@ -847,7 +813,6 @@ by transforming it to lower Y and then back*/
     grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
     width: 100%;
-    width: 100%;
 }
 
 .stat {
@@ -874,7 +839,6 @@ by transforming it to lower Y and then back*/
 /* For the first type I want the text to be fully colored red*/
 .stat span:first-of-type {
     color: var(--slux);
-    font-weight: bold;
 }
 
 .stat .label {
@@ -884,12 +848,7 @@ by transforming it to lower Y and then back*/
     letter-spacing: 0.07em;
 }
 
-.slux-join {
-    margin-top: 1.5rem;
-}
-
 #slux .count {
-    color: var(--slux);
     text-shadow: none;
 }
 
@@ -1067,15 +1026,11 @@ by transforming it to lower Y and then back*/
 }
 
 /* ===== CONTACT SECTION ===== */
-
-/* Content is displayed as a column of elements */
 #contact .content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 100%;
-    padding: 2rem;
 }
 
 .contact-title {
@@ -1088,119 +1043,155 @@ by transforming it to lower Y and then back*/
     -webkit-background-clip: text;
     background-clip: text;
     margin: 0.5rem 0 1.2rem;
+    transform: translateY(-200px);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
 .contact-desc {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.35);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     line-height: 1.65;
-    max-width: 380px;
+    text-align: center;
 }
 
-/* Column of links, used display flex with column direction */
-.links {
+/* Contact Form */
+.contact-form {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 0.8rem;
+    max-width: 40%;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(200px);
+    transition: opacity 0.5s ease 0.2s, transform 0.5s var(--ease-bounce) 0.2s;
+}
+
+#contact .content.visible form,
+.content.visible .links,
+.content.visible .contact-desc {
+    opacity: 1;
+    transform: none;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 5px;
+    padding: 0.7rem 1rem;
+    color: white;
+    font-size: 0.9rem;
+    font-family: "DM Sans", sans-serif;
+    outline: none;
+    resize: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--secondary-color);
+    background: rgba(38, 161, 192, 0.04);
+}
+
+.contact-form textarea {
+    min-height: 110px;
+}
+
+.contact-form .btn {
+    max-width: 25%;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 5px;
+    background: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+    color: white;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.contact-form .btn:hover {
+    background: var(--secondary-color);
+}
+
+/* Links */
+.links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.8rem;
+    opacity: 0;
+    transform: translateY(200px);
+    transition: opacity 0.5s ease 0.4s, transform 0.5s var(--ease-bounce) 0.4s;
+    max-width: 100%;
 }
 
 .link {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.2rem;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 5px;
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.45);
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    opacity: 0;
-    transform: translateX(-30px);
-    cursor: pointer;
-
-    /* attribute i is taken from style="--i:INDEX" to calculate smooth transition */
-    transition:
-        opacity 0.5s ease calc(0.3s + var(--i) * 0.1s),
-        transform 0.5s var(--ease-bounce) calc(0.35s + var(--i) * 0.1s),
-        color 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease;
-}
-
-.content.visible .link {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.link:hover {
-    color: white;
-    border-color: var(--secondary-color);
-    background: rgba(38, 161, 192, 0.07);
-}
-
-.contact-icon {
-    width: 34px;
-    height: 34px;
+    width: 20%;
+    padding: 0.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 4px;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.25);
-    flex-shrink: 0;
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    background: none;
     transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
 }
 
-.link:hover .contact-icon {
+.link:hover {
     border-color: var(--secondary-color);
     color: var(--secondary-color);
-    background: rgba(38, 161, 192, 0.1);
+    background: rgba(38, 161, 192, 0.07);
 }
 
-.platform-name {
-    color: rgba(255, 255, 255, 0.85);
-    letter-spacing: 0.04em;
-    min-width: 88px;
-    transition: color 0.25s ease;
-    font-weight: bold;
-    text-align: left;
+/* Contact-Modal */
+.contact-modal {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    background: #111;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    padding: 2.5rem;
+    text-align: center;
+    max-width: 320px;
+    width: 90%;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s var(--ease-bounce);
 }
 
-.link:hover .platform-name {
-    color: white;
+.contact-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 20%);
 }
 
-.platform-username {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.22);
-    flex: 1;
-    font-weight: 300;
-    letter-spacing: 0.04em;
-    transition: color 0.25s ease;
-    text-align: right;
+.contact-modal i {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
 }
 
-.link:hover .platform-username {
-    color: rgba(255, 255, 255, 0.5);
+.contact-modal p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
 }
 
-.nav-accent {
-    width: 2px;
-    height: 0;
-    background: var(--secondary-color);
-    border-radius: 2px;
-    margin-left: auto;
-    transition: height 0.4s var(--ease-bounce);
-}
-
-.link:hover .nav-accent {
-    height: 20px;
-}
 
 /* # RESPONSIVITY */
 
@@ -1210,10 +1201,6 @@ by transforming it to lower Y and then back*/
         justify-content: center;
         overflow-y: hidden;
         padding: 4rem 1rem;
-    }
-
-    #home article {
-        max-width: 100%;
     }
 }
 
@@ -1230,6 +1217,14 @@ by transforming it to lower Y and then back*/
 
     .slux-stats {
         max-width: 100%;
+    }
+
+    .contact-form {
+        max-width: 80%;
+    }
+
+    .contact-form .btn {
+        max-width: 40%;
     }
 }
 
@@ -1255,15 +1250,6 @@ by transforming it to lower Y and then back*/
         max-width: 100%;
     }
 
-    .links {
-        max-width: 60%;
-    }
-
-    .link span:nth-of-type(3),
-    .link span:nth-of-type(4) {
-        display: none;
-    }
-
     #dots {
         right: 0.5rem;
     }
@@ -1274,5 +1260,13 @@ by transforming it to lower Y and then back*/
 
     .stat span:first-of-type {
         font-size: 1rem;
+    }
+
+    .contact-form {
+        max-width: 100%;
+    }
+    
+    .contact-form .btn {
+        max-width: 80%;
     }
 }

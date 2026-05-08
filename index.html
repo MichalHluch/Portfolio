@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Michal Hlúch</title>
+    <link rel="icon" type="image/svg+xml" href="img/icon.svg">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap"
         rel="stylesheet">
@@ -40,10 +41,10 @@
                             class="slux" href="https://slux.cz/" target="_blank">Slux</a>. I care about performance,
                         clean architecture, and shipping things that actually work.</p>
                     <div class="bubbles">
-                        <button onclick="section(1)" class="bubble" style="--i:0">
+                        <button onclick="section(1)" class="bubble">
                             <span><span class="count" data-target="7">0</span>+ years of coding</span>
                         </button>
-                        <button onclick="section(2)" class="bubble" style="--i:1">
+                        <button onclick="section(2)" class="bubble">
                             <span><span class="count" data-target="10">0</span>+ projects</span>
                         </button>
                         <a href="https://www.fit.vut.cz/" target="_blank" class="bubble" style="--i:2">
@@ -413,44 +414,46 @@
             </div>
         </section>
 
-
         <!-- CONTACT SECTION -->
         <section id="contact">
-            <div class="bg-blob b3"></div> <!--Background blobs for effect-->
+            <div class="bg-blob b3"></div>
             <div class="content">
                 <h2 class="contact-title">Let's work<br>together</h2>
-                <p class="contact-desc">Wanna collaborate? Contact me via links below.</p>
+                <p class="contact-desc">Fill in the form or reach me on socials below.</p>
+
+                <form method="post" class="contact-form" onsubmit="submitMessage(event)">
+                    <input type="text" id="contactName" placeholder="Michal Hlúch" required>
+                    <input type="email" id="contactEmail" placeholder="your@email.com" required>
+                    <textarea id="contactMsg" placeholder="Your message..." required></textarea>
+                    <button type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i> Send</button>
+                </form>
+
                 <div class="links">
-                    <a href="mailto:m.hluch@seznam.cz" class="link" style="--i:0">
-                        <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
-                        <span class="platform-name">Email</span>
-                        <span class="platform-username">m.hluch@seznam.cz</span>
-                        <span class="nav-accent"></span>
+                    <a href="mailto:m.hluch@seznam.cz" class="link" title="Email">
+                        <i class="fa-solid fa-envelope"></i>
                     </a>
-                    <p onclick="copyText('_neko1')" class="link" style="--i:1">
-                        <span class="contact-icon"><i class="fa-brands fa-discord"></i></span>
-                        <span class="platform-name">Discord</span>
-                        <span class="platform-username">_Neko1</span>
-                        <span class="nav-accent"></span>
-                    </p>
-                    <a href="https://github.com/MichalHluch" target="_blank" class="link" style="--i:2">
-                        <span class="contact-icon"><i class="fa-brands fa-github"></i></span>
-                        <span class="platform-name">GitHub</span>
-                        <span class="platform-username">MichalHluch</span>
-                        <span class="nav-accent"></span>
+                    <button onclick="copyText(this, '_neko1')" class="link" title="Discord">
+                        <i class="fa-brands fa-discord"></i>
+                    </button>
+                    <a href="https://github.com/MichalHluch" target="_blank" class="link" title="GitHub">
+                        <i class="fa-brands fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/michal-hl%C3%BAch-7a118a271/" target="_blank" class="link"
-                        style="--i:3">
-                        <span class="contact-icon"><i class="fa-brands fa-linkedin"></i></span>
-                        <span class="platform-name">LinkedIn</span>
-                        <span class="platform-username">Michal Hlúch</span>
-                        <span class="nav-accent"></span>
+                    <a href="https://www.linkedin.com/in/michal-hl%C3%BAch-7a118a271/" target="_blank" class="link" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i>
                     </a>
                 </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="contact-modal">
+                <i class="fa-solid fa-circle-check"></i>
+                <h3>Message sent</h3>
+                <p>Thanks for contacting me! I will respond as soon as possible.</p>
             </div>
         </section>
     </div>
 
     <script src="js/script.js"></script>
 </body>
+
 </html>

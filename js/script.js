@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         requestAnimationFrame(() => {
                             content.classList.add('visible');
                             //Run animations when switching to different section
-                            animateCounters();
-                            updateSluxOnlinePlayers();
+                            animateCounters(current);
+                            if(current === 3) updateSluxOnlinePlayers(); //When scrolling to slux section update players.
                         })
                     }); //Wait 2 frames to add back visible class for smoothnes
                 }
@@ -105,11 +105,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     section(0); //Start at section with index 0
+    updateSluxOnlinePlayers(); //Update players for slux section
 });
 
 //Function that creates counters animated, like it goes from 0 to the targeted value linearly
-function animateCounters() {
-    document.querySelectorAll('.count').forEach(counter => {
+//Runs only for the selected section (by the id + 1 because the index stars from 0 but the nth-of-type from 1).
+function animateCounters(id) {
+    document.querySelectorAll(`section:nth-of-type(${id + 1}) .count`).forEach(counter => {
         const target = +counter.dataset.target;
         let current = 0;
 
@@ -174,4 +176,15 @@ function toggleProjects() {
             el.classList.toggle('revealed', !isOpen);
         }, i * 50);
     });
+}
+
+function submitMessage(event) {
+    event.preventDefault(); //Cancels the page refresh
+    let modal = document.querySelector('.contact-modal');
+    if(!modal) return;
+    modal.classList.add('show');
+    setTimeout(() => {
+        modal.classList.remove('show');
+    }, 2000);
+    event.currentTarget.reset(); //Resets the form (clears all fields)
 }
