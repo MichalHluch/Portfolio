@@ -22,8 +22,8 @@ Design webu je založen na tmavém pozadí s modrými akcenty. Pro oživení jse
 
 Barevné schéma je definováno pomocí CSS proměnných (:root), což umožňuje snadnou změnu vzhledu celého webu.
 
-Pro responzivitu textu jsem využíval funkci clamp() a dále klasické @media queries. Snažil jsem se také o konzistentní design napříč celým webem opakovaným využíváním vizuálních prvků.
+Pro responzivitu textu jsem využíval funkci clamp() a dále klasické @media queries. Snažil jsem se také o konzistentní design napříč celým webem opakovaným využíváním vizuálních prvků. Celkově veškeré max-/width a max-/height jsou v % což mi vyřešilo 80% responzivity.
 
 ## Použití AI
 
-Během vývoje jsem využil AI zejména při implementaci section scrollingu v JavaScriptu, aby bylo zajištěno správné chování na všech zařízeních. Veškerý použitý kód však plně chápu.
+Během vývoje jsem využil AI zejména při implementaci section scrollingu v JavaScriptu, aby bylo zajištěno správné chování na všech zařízeních. Veškerý použitý kód však plně chápu. Ikonka webu byla vygenerovaná pomocí AI - svg soubor.
